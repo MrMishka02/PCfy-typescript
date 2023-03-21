@@ -1,1 +1,6 @@
-export { default as Home } from './Home/Home'
+export { default as Home } from './Landing/Home'
+export { default as ModalPage } from './Modal/ModalPage'
+export { default as PersonalInfo} from './Person&Laptop/PersonalInfo'
+export { default as LaptopInfo } from './Person&Laptop/LaptopInfo'
+export { default as EntriesList } from './EntriesList/EntriesList'
+export { default as InfoPage } from './InfoPage/InfoPage'
