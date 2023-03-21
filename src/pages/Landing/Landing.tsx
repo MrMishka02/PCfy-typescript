@@ -7,10 +7,10 @@ const Landing = (props: Props) => {
       <Wall />
       <div className='mt-16 flex w-[24.18rem] flex-col items-center sm:mt-[5rem]'>
         <div className='mb-6 h-[3.75rem] w-[24.18rem] sm:w-[22.375rem]'>
-          <Button />
+          <Button text={'მონაცემის დამატება'} />
         </div>
         <div className='h-[3.75rem] w-[24.18rem] sm:w-[22.375rem]'>
-          <Button />
+          <Button text={'ჩანაწერების ნახვა'} />
         </div>
       </div>
     </div>
