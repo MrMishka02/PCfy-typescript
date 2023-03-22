@@ -6,12 +6,12 @@ const Wall = () => {
     <div className=''>
       <img
         src={wall}
-        className='w-[781px] h-[482px] mt-14 hidden sm:block'
+        className='w-[781px] h-[482px] mt-14 block sm:hidden'
         alt='Wallpaper'
       />
       <img
         src={smallWall}
-        className='w-[268.58px] h-[349px] mt-[7.5rem] sm:hidden'
+        className='w-[268.58px] h-[349px] mt-[7.5rem] hidden sm:block'
         alt='Wallpaper'
       />
     </div>

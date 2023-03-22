@@ -1,9 +1,16 @@
-interface Props {
+import { useNavigate } from 'react-router-dom'
+
+type Props = {
   text: string
+  path: string
 }
-function Button({ text }: Props) {
+function Button({ text, path }: Props) {
+  const navigate = useNavigate()
   return (
     <button
+      onClick={() => {
+        navigate(path)
+      }}
       className='mb-[1.625rem] h-full w-full
     cursor-pointer rounded-[0.5rem] border-none bg-[#62A1EB]
     text-[1.28rem] font-[500] leading-6
