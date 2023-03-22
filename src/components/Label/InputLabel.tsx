@@ -1,7 +1,7 @@
 type Props = {
-  text: String
-  hint: String
-  holder: any
+  text: string
+  hint: string
+  holder: string
 }
 
 const InputLabel = ({ text, holder, hint }: Props) => {
