@@ -69,7 +69,7 @@ const LaptopInfo = () => {
               className='ml-[10.7rem] flex w-[55rem] items-center justify-evenly
             sm:ml-0 sm:w-[24.375rem] sm:flex-col'
             >
-              <div className='w-[17.25rem] sm:mt-7 sm:mb-10 sm:w-[22.375rem]'>
+              <div className='w-[17.25rem] mt-2 sm:mt-7 sm:mb-10 sm:w-[22.375rem]'>
                 <Select defaultValue={'CPU'}></Select>
               </div>
               <div className=' ml-4 w-[17.25rem] sm:ml-0 sm:mb-6 sm:w-[22.375rem]'>
@@ -168,7 +168,7 @@ const LaptopInfo = () => {
           </div>
         </div>
       </div>
-      <div className='relative top-[4rem] mb-6 flex w-full justify-center xl:hidden sm:hidden'>
+      <div className='relative top-[4rem] pb-6 flex w-full justify-center xl:hidden sm:hidden'>
         <LogoBottom />
       </div>
     </div>

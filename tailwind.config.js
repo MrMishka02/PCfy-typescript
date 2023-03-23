@@ -8,7 +8,11 @@ module.exports = {
       xl: { max: '1280px' },
       lg: { max: '1024px' },
     },
-    extend: {},
+    extend: {
+      fontFamily: {
+        'sans': ['Helvetica Neue']
+      },
+    },
   },
   plugins: [],
 }

@@ -24,7 +24,7 @@ const PCList = () => {
         <p
           className='mt-4 select-none text-base text-[#4386A9]
         underline hover:cursor-pointer sm:mt-2 sm:text-sm'
-        onClick={()=>navigate('/info-page')}
+          onClick={() => navigate('/info-page')}
         >
           მეტის ნახვა
         </p>
