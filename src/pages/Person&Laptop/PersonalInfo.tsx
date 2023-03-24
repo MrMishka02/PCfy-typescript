@@ -74,9 +74,9 @@ const PersonalInfo = () => {
           />
         </div>
         <div
-          className='mt-[9.3rem] ml-[54.7rem] h-[3.75rem] w-[11rem]
-        xl:m-auto xl:mt-[8rem] xl:h-[4rem] sm:ml-[14.8rem] sm:mt-[4.6rem]
-        sm:h-[2.875rem] sm:w-[8.25rem]'
+          className='mt-[9.3rem]  h-[3.75rem] w-[11rem]
+         xl:mt-[8rem] xl:h-[4rem] sm:mt-[4.6rem] mx-auto
+        sm:h-[2.875rem] sm:w-[8.25rem] smMin:float-right smMin:mr-[15%] mr-8%'
         >
           <Button path={'/laptop-info'} text={'შემდეგი'} />
         </div>
