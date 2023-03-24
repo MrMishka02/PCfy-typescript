@@ -21,14 +21,14 @@ const InfoPage = () => {
           />
         </div>
         <div className='flex w-[50%] sm:mt-4 sm:w-full'>
-          <div className='ml-14 mt-8 w-[30%] sm:ml-10 sm:mt-0 sm:w-[45%]'>
+          <div className='ml-4 mt-8 w-[30%] sm:ml-10 sm:mt-0 sm:w-[45%]'>
             <InfoLabel text={'სახელი: '} />
             <InfoLabel text={'თიმი: '} />
             <InfoLabel text={'პოზიცია: '} />
             <InfoLabel text={'მეილი: '} />
             <InfoLabel text={'ტელ. ნომერი: '} />
           </div>
-          <div className='ml-14 mt-8 w-[50%] sm:ml-0 sm:mt-0 sm:w-[50%]'>
+          <div className='ml-10 mt-8 w-[50%] sm:ml-0 sm:mt-0 sm:w-[50%] '>
             <InfoText text={'აკაკი წერეთელი'} />
             <InfoText text={'დიზაინერები'} />
             <InfoText text={'ილუსტრატორი'} />
