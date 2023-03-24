@@ -54,7 +54,7 @@ const LaptopInfo = () => {
             />
           </div>
           <div className='mt-2 flex h-[7.25rem] w-[25.5rem] items-center sm:w-[22.375rem]'>
-            <Select defaultValue={'Brand'}></Select>
+            <Select defaultValue={'Brand'} data={undefined}></Select>
           </div>
         </div>
         <div className='w-[55rem] md:hidden'>
@@ -67,7 +67,7 @@ const LaptopInfo = () => {
              md:w-[24.375rem] flex-col lgMin:flex-row gap-3 lgMin:justify-between'
             >
               <div className='w-[17.25rem] mt-2 sm:mt-7 sm:mb-10 sm:w-[22.375rem]'>
-                <Select defaultValue={'CPU'}></Select>
+                <Select defaultValue={'CPU'} data={undefined}></Select>
               </div>
               <div className='w-[17.25rem] md:mb-6 md:w-[22.375rem] smMin:min-w-[28rem] lgMin:min-w-[17rem]'>
                 <InputLabel
