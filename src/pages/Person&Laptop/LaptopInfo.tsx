@@ -16,7 +16,7 @@ const LaptopInfo = () => {
   return (
     <div>
       <CircleButton path={'/personal-info'} />
-      <div className='mt-[5.7rem] flex justify-center lg:ml-[18rem] md:ml-[28rem] sm:ml-0 sm:mt-[1.9rem]'>
+      <div className='mt-[5.7rem] flex justify-center  sm:mt-[1.9rem]'>
         <div className='sm:hidden'>
           <HeadLabel
             path={'/personal-info'}
