@@ -14,7 +14,7 @@ import { useNavigate } from 'react-router-dom'
 const LaptopInfo = () => {
   const navigate = useNavigate()
   return (
-    <div className='flex flex-col items-center justify-center'>
+    <div className='flex flex-col items-center justify-center overflow-x-hidden'>
       <CircleButton path={'/personal-info'} />
       <div className='mt-[5.7rem] flex justify-center  sm:mt-[1.9rem]'>
         <div className='sm:hidden'>
@@ -53,7 +53,7 @@ const LaptopInfo = () => {
               hint={'ლათინური ასოები, ციფრები, !@#$%^&*()_+='}
             />
           </div>
-          <div className='mt-2 flex h-[7.25rem] w-[25.5rem] items-center sm:w-[22.375rem]'>
+          <div className='mt-2 flex h-[7.25rem] w-[25.5rem] items-center md:w-[22.375rem] smMin:min-w-[28rem] lgMin:min-w-[28rem]'>
             <Select defaultValue={'Brand'} data={undefined}></Select>
           </div>
         </div>
@@ -66,7 +66,7 @@ const LaptopInfo = () => {
               className='flex w-[55rem] items-center justify-evenly 
              md:w-[24.375rem] flex-col lgMin:flex-row gap-3 lgMin:justify-between'
             >
-              <div className='w-[17.25rem] mt-2 sm:mt-7 sm:mb-10 sm:w-[22.375rem]'>
+              <div className='w-[17.25rem] md:mb-6 md:w-[22.375rem] smMin:min-w-[28rem] lgMin:min-w-[17rem] lgMin:mt-2'>
                 <Select defaultValue={'CPU'} data={undefined}></Select>
               </div>
               <div className='w-[17.25rem] md:mb-6 md:w-[22.375rem] smMin:min-w-[28rem] lgMin:min-w-[17rem]'>
@@ -165,7 +165,7 @@ const LaptopInfo = () => {
           </div>
         </div>
       </div>
-      <div className='relative pb-6 flex w-full justify-center  md:hidden mt-[85rem] lgMin:mt-[65rem]'>
+      <div className='relative pb-6 flex w-full justify-center  sm:hidden mt-[78rem] mdMin:mt-[85rem] lgMin:mt-[65rem] '>
         <LogoBottom />
       </div>
     </div>
