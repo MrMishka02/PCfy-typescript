@@ -31,17 +31,17 @@ const PersonalInfo = () => {
       xl:w-full sm:mt-20 sm:w-[24.375rem] '
       >
         <div
-          className='relative top-16 lgMin:top-24  flex flex-col lgMin:flex-row  h-32 w-[54.875rem] justify-center items-center lgMin:justify-evenly mx-auto
-          sm:w-[22.375rem]'
+          className='relative top-16 lgMin:top-24  flex flex-col lgMin:flex-row  h-32  justify-center items-center lgMin:justify-evenly mx-auto
+          sm:w-[22.375rem] smMin:gap-5 lgMin:w-[71%]'
         >
-          <div className='w-[25.4375rem] sm:w-[22.375rem]'>
+          <div className='w-[71.8%] sm:w-[22.375rem]'>
             <InputLabel
               text={'სახელი'}
               holder={'გრიშა'}
               hint={'მინიმუმ 2 სიმბოლო, ქართული ასოები'}
             />
           </div>
-          <div className='w-[25.4375rem] sm:mt-5 sm:w-[22.375rem]'>
+          <div className='w-[71.8%] sm:mt-5 sm:w-[22.375rem]'>
             <InputLabel
               text={'გვარი'}
               holder={'ბაგრატიონი'}
@@ -51,8 +51,8 @@ const PersonalInfo = () => {
         </div>
         <div
           className=' mt-[10rem] flex h-[10.8rem] 
-        flex-col justify-between xl:mt-[10rem] min-w-[22rem]
-        items-center sm:mt-[16rem] '
+        flex-col justify-between xl:mt-[10rem] min-w-[22rem] 
+        items-center sm:mt-[16rem]'
         >
           <Select defaultValue={'თიმი'}></Select>
           <Select defaultValue={'პოზიცია'}></Select>

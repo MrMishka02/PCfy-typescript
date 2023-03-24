@@ -16,8 +16,8 @@ function HeadLabel({ text, showLine, path }: Props) {
       }}
     >
       <p
-        className='h-[1.5rem] w-[20.8rem] select-none
-            text-center text-[1.31rem] font-[700] leading-[1.5rem]
+        className='h-[1.5rem] w-[18rem] mdMin:w-[20.8rem] select-none
+            text-center text-xs smMin:text-[1.31rem] smMin:font-[700] leading-[1.5rem]
             text-[#232323] hover:cursor-pointer sm:text-base'
       >
         {text}
