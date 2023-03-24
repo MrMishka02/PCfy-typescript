@@ -28,12 +28,11 @@ const PersonalInfo = () => {
       </div>
       <form
         className='m-auto mt-6 h-[60.8rem] w-[76.6rem] rounded-[1.125rem] bg-[#FFFFFF]
-      xl:w-full sm:mt-20 sm:w-[24.375rem]'
+      xl:w-full sm:mt-20 sm:w-[24.375rem] '
       >
         <div
-          className='relative top-24 ml-[10.8rem] flex h-32 w-[54.875rem] justify-between
-          xl:m-auto xl:w-full xl:justify-evenly
-        sm:ml-[1rem] sm:mt-[-3.6rem] sm:block sm:w-[22.375rem]'
+          className='relative top-16 lgMin:top-24  flex flex-col lgMin:flex-row  h-32 w-[54.875rem] justify-center items-center lgMin:justify-evenly mx-auto
+          sm:w-[22.375rem]'
         >
           <div className='w-[25.4375rem] sm:w-[22.375rem]'>
             <InputLabel
@@ -51,9 +50,9 @@ const PersonalInfo = () => {
           </div>
         </div>
         <div
-          className='ml-[10.8rem] mt-[8.8rem] flex h-[10.8rem] w-[54.875rem]
-        flex-col justify-between xl:m-auto xl:mt-[10rem] xl:w-[40rem]
-        sm:m-auto sm:mt-[16rem] sm:w-[22.375rem]'
+          className=' mt-[10rem] flex h-[10.8rem] 
+        flex-col justify-between xl:mt-[10rem] min-w-[22rem]
+        items-center sm:mt-[16rem] '
         >
           <Select defaultValue={'თიმი'}></Select>
           <Select defaultValue={'პოზიცია'}></Select>
