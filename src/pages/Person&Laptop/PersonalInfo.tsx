@@ -6,8 +6,22 @@ import {
   Button,
   LogoBottom,
 } from 'components'
+import { useEffect, useState } from 'react'
 
 const PersonalInfo = () => {
+  const [fetchedTeam, setFetchedTeam] = useState([])
+  useEffect(() => {
+    fetch(`https://pcfy.redberryinternship.ge/api/teams`)
+      .then((response) => response.json())
+      .then((json) => setFetchedTeam(json.data))
+  }, [])
+  const [fetchedPosition, setFetchedPosition] = useState([])
+  useEffect(() => {
+    fetch(`https://pcfy.redberryinternship.ge/api/positions`)
+      .then((response) => response.json())
+      .then((json) => setFetchedPosition(json.data))
+  }, [])
+
   return (
     <div className='m-0'>
       <CircleButton path={'/'} />
@@ -55,8 +69,8 @@ const PersonalInfo = () => {
         flex-col justify-between xl:m-auto xl:mt-[10rem] xl:w-[40rem]
         sm:m-auto sm:mt-[16rem] sm:w-[22.375rem]'
         >
-          <Select defaultValue={'თიმი'}></Select>
-          <Select defaultValue={'პოზიცია'}></Select>
+          <Select defaultValue={'თიმი'} data={fetchedTeam}></Select>
+          <Select defaultValue={'პოზიცია'} data={fetchedPosition}></Select>
         </div>
         <div
           className='relative top-[3.2rem] ml-[10.8rem] flex h-[17.6rem]

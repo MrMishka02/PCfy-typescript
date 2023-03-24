@@ -6,7 +6,7 @@ const Wall = () => {
     <div className=''>
       <img
         src={wall}
-        className='w-[781px] h-[482px] mt-14 block sm:hidden'
+        className='w-[781px] h-[482px] mt-14 block lg:w-[640px] lg:h-[420px] sm:hidden'
         alt='Wallpaper'
       />
       <img
