@@ -8,7 +8,7 @@ const InputLabel = ({ text, holder, hint }: Props) => {
   return (
     <div className='flex flex-col'>
       <p
-        className={`text-[black] mb-2 h-[1.5rem] w-[18.1rem] text-[1.125rem] font-[500] leading-[1.31rem]`}
+        className={`text-[black] mb-2 h-[1.5rem] w-[18.1rem]  text-[1.125rem] font-[500] leading-[1.31rem]`}
       >
         {text}
       </p>

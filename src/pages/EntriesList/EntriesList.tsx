@@ -3,7 +3,7 @@ import React from 'react'
 
 const entriesList = () => {
   return (
-    <div className='flex h-full w-full flex-col items-center bg-[#FFFFFF]'>
+    <div className='flex h-full w-full flex-col items-center bg-[#FFFFFF] overflow-x-hidden'>
       <CircleButton path={'/'} />
       <div className='flex w-full justify-center'>
         <InfoHeadLabel text={'ᲩᲐᲜᲐᲬᲔᲠᲔᲑᲘᲡ ᲡᲘᲐ'} />
