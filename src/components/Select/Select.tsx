@@ -1,6 +1,6 @@
-type Props = {
+interface Props {
   defaultValue: string
-  data: any
+  data?: { name: string }[]
 }
 const Select = ({ defaultValue, data }: Props) => {
   return (
@@ -9,7 +9,7 @@ const Select = ({ defaultValue, data }: Props) => {
        bg-[#EBEBEB] pl-2 text-[1.125rem] leading-[1.31rem] text-[#000000] min-w-[22.375rem] smMin:min-w-[28rem]   `}
     >
       <option value=''>{defaultValue}</option>
-      {data?.map((item: any) => (
+      {data?.map((item: { name: string }) => (
         <option key={item.name} value={item.name}>
           {item.name}
         </option>
