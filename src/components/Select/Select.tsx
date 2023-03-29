@@ -1,6 +1,6 @@
 interface Props {
   defaultValue: string
-  data?: any[]
+  data?: { id: number; team_id?: number; name: string }[]
   selectChange?: any
   disabled?: boolean
 }
