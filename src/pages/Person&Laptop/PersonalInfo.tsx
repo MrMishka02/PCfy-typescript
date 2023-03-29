@@ -6,22 +6,19 @@ import {
   Button,
   LogoBottom,
 } from 'components'
-import { useEffect, useState } from 'react'
+import positions from 'positions'
+import { useState } from 'react'
+import teams from 'teams'
 
 const PersonalInfo = () => {
-  const [fetchedTeam, setFetchedTeam] = useState([])
-  useEffect(() => {
-    fetch(`https://pcfy.redberryinternship.ge/api/teams`)
-      .then((response) => response.json())
-      .then((json) => setFetchedTeam(json.data))
-  }, [])
-  const [fetchedPosition, setFetchedPosition] = useState([])
-  useEffect(() => {
-    fetch(`https://pcfy.redberryinternship.ge/api/positions`)
-      .then((response) => response.json())
-      .then((json) => setFetchedPosition(json.data))
-  }, [])
-
+  const [selectedTeam, setSelectedTeam] = useState('')
+  function handleChangeTeam(event: { target: { value: string } }) {
+    setSelectedTeam(event.target.value)
+  }
+  let filteredTeam = teams.filter((item) => item.name === selectedTeam)
+  const filteredPosition = positions.filter(
+    (item) => item.team_id === filteredTeam[0]?.id
+  )
   return (
     <div className='m-0'>
       <CircleButton path={'/'} />
@@ -64,12 +61,16 @@ const PersonalInfo = () => {
           </div>
         </div>
         <div
-          className=' mt-[10rem] flex h-[10.8rem] 
-        flex-col justify-between xl:mt-[10rem] min-w-[22rem] 
+          className=' mt-[10rem] flex h-[10.8rem]
+        flex-col justify-between xl:mt-[10rem] min-w-[22rem]
         items-center sm:mt-[16rem]'
         >
-          <Select defaultValue={'თიმი'} data={fetchedTeam}></Select>
-          <Select defaultValue={'პოზიცია'} data={fetchedPosition}></Select>
+          <Select
+            defaultValue={'თიმი'}
+            data={teams}
+            selectChange={handleChangeTeam}
+          ></Select>
+          <Select defaultValue={'პოზიცია'} data={filteredPosition}></Select>
         </div>
         <div
           className='relative top-[3.2rem] ml-[10.8rem] flex h-[17.6rem]

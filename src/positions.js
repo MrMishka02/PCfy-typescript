@@ -2,86 +2,88 @@ const positions = [
   {
     id: 1,
     team_id: 1,
-    position: 'ჯუნიორ დეველოპერი',
+    name: 'ჯუნიორ დეველოპერი',
   },
   {
     id: 2,
     team_id: 1,
-    position: 'მიდლ დეველოპერი',
+    name: 'მიდლ დეველოპერი',
   },
   {
     id: 3,
     team_id: 1,
-    position: 'სენიორ დეველოპერი',
+    name: 'სენიორ დეველოპერი',
   },
   {
     id: 4,
     team_id: 1,
-    position: 'Full-Stack დეველოპერი',
+    name: 'Full-Stack დეველოპერი',
   },
   {
     id: 5,
     team_id: 2,
-    position: 'HR ასისტენტი',
+    name: 'HR ასისტენტი',
   },
   {
     id: 6,
     team_id: 2,
-    position: 'HR სპეციალისტი',
+    name: 'HR სპეციალისტი',
   },
   {
     id: 7,
     team_id: 2,
-    position: 'HR მენეჯერი',
+    name: 'HR მენეჯერი',
   },
   {
     id: 8,
     team_id: 3,
-    position: 'მოლარე-ოპერატორი',
+    name: 'მოლარე-ოპერატორი',
   },
   {
     id: 9,
     team_id: 3,
-    position: 'გაყიდვების აგენტი',
+    name: 'გაყიდვების აგენტი',
   },
   {
     id: 10,
     team_id: 3,
-    position: 'გაყიდვების მენეჯერი',
+    name: 'გაყიდვების მენეჯერი',
   },
   {
     id: 11,
     team_id: 4,
-    position: 'UI დიზაინერი',
+    name: 'UI დიზაინერი',
   },
   {
     id: 12,
     team_id: 4,
-    position: 'UX დიზაინერი',
+    name: 'UX დიზაინერი',
   },
   {
     id: 13,
     team_id: 4,
-    position: 'გრაფიკული დიზაინერი',
+    name: 'გრაფიკული დიზაინერი',
   },
   {
     id: 14,
     team_id: 5,
-    position: 'მარკეტინგის სპეციალისტი',
+    name: 'მარკეტინგის სპეციალისტი',
   },
   {
     id: 15,
     team_id: 5,
-    position: 'მარკეტინგის კონსულტანტი',
+    name: 'მარკეტინგის კონსულტანტი',
   },
   {
     id: 16,
     team_id: 5,
-    position: 'მარკეტინგის ანალიტიკოსი',
+    name: 'მარკეტინგის ანალიტიკოსი',
   },
   {
     id: 17,
     team_id: 5,
-    position: 'მარკეტინგის მენეჯერი',
+    name: 'მარკეტინგის მენეჯერი',
   },
 ]
+
+export default positions

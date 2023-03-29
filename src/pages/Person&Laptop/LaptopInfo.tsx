@@ -43,7 +43,7 @@ const LaptopInfo = () => {
           <FileUpload />
         </div>
         <div
-          className='mt-16 flex w-[55rem] items-center 
+          className='mt-16 flex w-[55rem] items-center
            md:w-full flex-col lgMin:flex-row lgMin:gap-5 justify-center'
         >
           <div className='w-[25.4375rem] md:w-[22.375rem] smMin:min-w-[28rem] lgMin:w-[18rem] '>
@@ -54,7 +54,7 @@ const LaptopInfo = () => {
             />
           </div>
           <div className='mt-2 flex h-[7.25rem] w-[25.5rem] items-center md:w-[22.375rem] smMin:min-w-[28rem] lgMin:min-w-[28rem]'>
-            <Select defaultValue={'Brand'} data={undefined}></Select>
+            <Select defaultValue={'Brand'}></Select>
           </div>
         </div>
         <div className='w-[55rem] md:hidden'>
@@ -63,11 +63,11 @@ const LaptopInfo = () => {
         <div className='md:h-[40.75rem] md:w-[24.375rem] md:rounded-lg md:bg-[#FFFFFF] '>
           <div className='h-30 mt-4 w-full  md:w-[24.375rem] md:flex-col '>
             <div
-              className='flex w-[55rem] items-center justify-evenly 
+              className='flex w-[55rem] items-center justify-evenly
              md:w-[24.375rem] flex-col lgMin:flex-row gap-3 lgMin:justify-between'
             >
               <div className='w-[17.25rem] md:mb-6 md:w-[22.375rem] smMin:min-w-[28rem] lgMin:min-w-[17rem] lgMin:mt-2'>
-                <Select defaultValue={'CPU'} data={undefined}></Select>
+                <Select defaultValue={'CPU'}></Select>
               </div>
               <div className='w-[17.25rem] md:mb-6 md:w-[22.375rem] smMin:min-w-[28rem] lgMin:min-w-[17rem]'>
                 <InputLabel
@@ -86,7 +86,7 @@ const LaptopInfo = () => {
             </div>
           </div>
           <div
-            className='mx-auto flex flex-col 
+            className='mx-auto flex flex-col
         items-center justify-between lgMin:flex-row gap-5 mt-3'
           >
             <div className=' w-[25.5rem] md:w-[22.375rem] smMin:min-w-[28rem] '>

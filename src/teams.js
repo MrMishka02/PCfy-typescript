@@ -1,22 +1,24 @@
 const teams = [
   {
     id: 1,
-    team: 'დეველოპმენტი',
+    name: 'დეველოპმენტი',
   },
   {
     id: 2,
-    team: 'HR',
+    name: 'HR',
   },
   {
     id: 3,
-    team: 'გაყიდვები',
+    name: 'გაყიდვები',
   },
   {
     id: 4,
-    team: 'დიზაინი',
+    name: 'დიზაინი',
   },
   {
     id: 5,
-    team: 'მარკეტინგი',
+    name: 'მარკეტინგი',
   },
 ]
+
+export default teams
