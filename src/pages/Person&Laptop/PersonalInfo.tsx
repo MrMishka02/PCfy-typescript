@@ -70,7 +70,11 @@ const PersonalInfo = () => {
             data={teams}
             selectChange={handleChangeTeam}
           ></Select>
-          <Select defaultValue={'პოზიცია'} data={filteredPosition}></Select>
+          <Select
+            defaultValue={'პოზიცია'}
+            data={filteredPosition}
+            disabled={selectedTeam === '' ? true : false}
+          ></Select>
         </div>
         <div
           className='relative top-[3.2rem] ml-[10.8rem] flex h-[17.6rem]
