@@ -6,17 +6,30 @@ import {
   Button,
   LogoBottom,
 } from 'components'
-import positions from 'positions'
-import { useState } from 'react'
-import teams from 'teams'
-
+import { useEffect, useState } from 'react'
 const PersonalInfo = () => {
+  const [fetchedTeam, setFetchedTeam] = useState([] as any[])
+  useEffect(() => {
+    fetch(
+      `https://pcfy-api.ibotchori.space/teams/get-teams?fbclid=IwAR1mfvr1aBDdk7FaOUgU9m_fCpvcZqWpHhUxNrRhGbGcp3LskS--2tOu_TU`
+    )
+      .then((response) => response.json())
+      .then((json) => setFetchedTeam(json))
+  }, [])
+  const [fetchedPosition, setFetchedPosition] = useState([] as any[])
+  useEffect(() => {
+    fetch(
+      `https://pcfy-api.ibotchori.space/positions/get-positions?fbclid=IwAR3jFUJagIVexBLdC2aZv2faBKQOt02z7ON-A2Ht-lpxXrUIJwW_hMWIU3I`
+    )
+      .then((response) => response.json())
+      .then((json) => setFetchedPosition(json))
+  }, [])
   const [selectedTeam, setSelectedTeam] = useState('')
   function handleChangeTeam(event: { target: { value: string } }) {
     setSelectedTeam(event.target.value)
   }
-  let filteredTeam = teams.filter((item) => item.name === selectedTeam)
-  const filteredPosition = positions.filter(
+  let filteredTeam = fetchedTeam.filter((item) => item.name === selectedTeam)
+  const filteredPosition = fetchedPosition.filter(
     (item) => item.team_id === filteredTeam[0]?.id
   )
   return (
@@ -67,7 +80,7 @@ const PersonalInfo = () => {
         >
           <Select
             defaultValue={'თიმი'}
-            data={teams}
+            data={fetchedTeam}
             selectChange={handleChangeTeam}
           ></Select>
           <Select
