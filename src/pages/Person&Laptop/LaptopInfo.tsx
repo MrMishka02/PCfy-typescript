@@ -6,7 +6,7 @@ import {
   Line,
   Select,
   RadioButton,
-  Button,
+  NextButton,
   LogoBottom,
 } from 'components'
 import { useState } from 'react'
@@ -25,11 +25,11 @@ const schema = yup.object().shape({
     ),
   laptopBrand: yup.string().required(),
   laptopCpu: yup.string().required(),
-  laptopCpuCores: yup.number().required('მხოლოდ ციფრები.'),
-  laptopCpuThreads: yup.number().required('მხოლოდ ციფრები.'),
-  laptopRam: yup.number().required('მხოლოდ ციფრები.'),
-  date: yup.number(),
-  laptopPrice: yup.number().required('მხოლოდ ციფრები.'),
+  laptopCpuCores: yup.number().required().typeError('მხოლოდ ციფრები.'),
+  laptopCpuThreads: yup.number().required().typeError('მხოლოდ ციფრები.'),
+  laptopRam: yup.number().required().typeError('მხოლოდ ციფრები.'),
+  date: yup.number().typeError(''),
+  laptopPrice: yup.number().required().typeError('მხოლოდ ციფრები.'),
   laptopHardDrive: yup.string().required(),
   laptopState: yup.string().required(),
 })
@@ -111,8 +111,9 @@ const LaptopInfo = () => {
           <div className='mt-2 flex h-[7.25rem] w-[25.5rem] items-center md:w-[22.375rem] smMin:min-w-[28rem] lgMin:min-w-[28rem]'>
             <Select
               defaultValue={'Brand'}
-              {...register('laptopBrand')}
               errors={errors.laptopBrand}
+              //register={register}
+              //inputName='laptopBrand'
             ></Select>
           </div>
         </div>
@@ -128,8 +129,9 @@ const LaptopInfo = () => {
               <div className='w-[17.25rem] md:mb-6 md:w-[22.375rem] smMin:min-w-[28rem] lgMin:min-w-[17rem] lgMin:mt-2'>
                 <Select
                   defaultValue={'CPU'}
-                  {...register('laptopCpu')}
                   errors={errors.laptopCpu}
+                  //register={register}
+                  //inputName='laptopCpu'
                 ></Select>
               </div>
               <div className='w-[17.25rem] md:mb-6 md:w-[22.375rem] smMin:min-w-[28rem] lgMin:min-w-[17rem]'>
@@ -223,7 +225,7 @@ const LaptopInfo = () => {
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                   setDate(e.target.value)
                 }
-                errors={errors.date}
+                errors=''
                 errorMessage={errors.date?.message}
               />
             </div>
@@ -268,7 +270,7 @@ const LaptopInfo = () => {
               უკან
             </p>
             <div className='h-[3.75rem] w-[13.7rem] md:h-[2.875rem] md:w-[10.125rem]'>
-              <Button text={'დამახსოვრება'} path={''} />
+              <NextButton text={'დამახსოვრება'} />
             </div>
           </div>
         </div>

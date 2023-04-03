@@ -3,7 +3,7 @@ import {
   HeadLabel,
   InputLabel,
   Select,
-  Button,
+  NextButton,
   LogoBottom,
 } from 'components'
 import { useState, useEffect } from 'react'
@@ -158,14 +158,18 @@ const PersonalInfo = () => {
             defaultValue={'თიმი'}
             data={fetchedTeam}
             selectChange={handleChangeTeam}
+            //register={register}
             {...register('team')}
+            //inputName='team'
             errors={errors.team}
           ></Select>
           <Select
             defaultValue={'პოზიცია'}
             data={filteredPosition}
             disabled={selectedTeam === '' ? true : false}
+            //register={register}
             {...register('position')}
+            // inputName='position'
             errors={errors.position}
           ></Select>
         </div>
@@ -208,7 +212,7 @@ const PersonalInfo = () => {
          xl:mt-[8rem] xl:h-[4rem] sm:mt-[4.6rem] mx-auto
         sm:h-[2.875rem] sm:w-[8.25rem] smMin:float-right smMin:mr-[15%] mr-8%'
         >
-          <Button text={'შემდეგი'} path={''} />
+          <NextButton text={'შემდეგი'} />
         </div>
       </form>
       <div className='mt-[4.3rem] mb-6 flex w-full justify-center sm:hidden'>
