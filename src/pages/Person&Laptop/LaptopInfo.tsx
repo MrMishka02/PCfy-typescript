@@ -96,7 +96,11 @@ const LaptopInfo = () => {
             />
           </div>
           <div className='mt-2 flex h-[7.25rem] w-[25.5rem] items-center md:w-[22.375rem] smMin:min-w-[28rem] lgMin:min-w-[28rem]'>
-            <Select defaultValue={'Brand'}></Select>
+            <Select
+              defaultValue={'Brand'}
+              {...register('laptopBrand')}
+              errors={errors.laptopBrand}
+            ></Select>
           </div>
         </div>
         <div className='w-[55rem] md:hidden'>
@@ -109,7 +113,11 @@ const LaptopInfo = () => {
              md:w-[24.375rem] flex-col lgMin:flex-row gap-3 lgMin:justify-between'
             >
               <div className='w-[17.25rem] md:mb-6 md:w-[22.375rem] smMin:min-w-[28rem] lgMin:min-w-[17rem] lgMin:mt-2'>
-                <Select defaultValue={'CPU'}></Select>
+                <Select
+                  defaultValue={'CPU'}
+                  {...register('laptopCpu')}
+                  errors={errors.laptopCpu}
+                ></Select>
               </div>
               <div className='w-[17.25rem] md:mb-6 md:w-[22.375rem] smMin:min-w-[28rem] lgMin:min-w-[17rem]'>
                 <InputLabel

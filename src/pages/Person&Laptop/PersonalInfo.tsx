@@ -25,7 +25,6 @@ const schema = yup.object().shape({
     .required('გვარი სავალდებულოა.'),
   team: yup.string().required(),
   position: yup.string().required(),
-
   email: yup
     .string()
     .required('ელ-ფოსტა სავალდებულოა.')
@@ -143,12 +142,14 @@ const PersonalInfo = () => {
             data={fetchedTeam}
             selectChange={handleChangeTeam}
             {...register('team')}
+            errors={errors.team}
           ></Select>
           <Select
             defaultValue={'პოზიცია'}
             data={filteredPosition}
             disabled={selectedTeam === '' ? true : false}
             {...register('position')}
+            errors={errors.position}
           ></Select>
         </div>
         <div
