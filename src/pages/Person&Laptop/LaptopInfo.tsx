@@ -9,6 +9,7 @@ import {
   Button,
   LogoBottom,
 } from 'components'
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
@@ -51,6 +52,12 @@ const LaptopInfo = () => {
     navigate('/laptop-info')
   }
 
+  const [laptopName, setLaptopName] = useState('')
+  const [laptopCpuCores, setLaptopCpuCores] = useState('')
+  const [laptopCpuThreads, setLaptopCpuThreads] = useState('')
+  const [laptopRam, setLaptopRam] = useState('')
+  const [laptopPrice, setLaptopPrice] = useState('')
+  const [date, setDate] = useState('')
   return (
     <div className='flex flex-col items-center justify-center overflow-x-hidden'>
       <CircleButton path={'/personal-info'} />
@@ -88,9 +95,15 @@ const LaptopInfo = () => {
           <div className='w-[25.4375rem] md:w-[22.375rem] smMin:min-w-[28rem] lgMin:w-[18rem] '>
             <InputLabel
               text={'ლეპტოპის სახელი'}
+              inputName='laptopName'
               holder={'HP'}
               hint={'ლათინური ასოები, ციფრები, !@#$%^&*()_+='}
-              {...register('laptopName')}
+              id='laptopName'
+              register={register}
+              value={laptopName}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                setLaptopName(e.target.value)
+              }
               errors={errors.laptopName}
               errorMessage={errors.laptopName?.message}
             />
@@ -122,9 +135,15 @@ const LaptopInfo = () => {
               <div className='w-[17.25rem] md:mb-6 md:w-[22.375rem] smMin:min-w-[28rem] lgMin:min-w-[17rem]'>
                 <InputLabel
                   text={'CPU-ს ბირთვი'}
+                  inputName='laptopCpuCores'
                   holder={'14'}
                   hint={'მხოლოდ ციფრები'}
-                  {...register('laptopCpuCores')}
+                  id='laptopCpuCores'
+                  register={register}
+                  value={laptopCpuCores}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                    setLaptopCpuCores(e.target.value)
+                  }
                   errors={errors.laptopCpuCores}
                   errorMessage={errors.laptopCpuCores?.message}
                 />
@@ -132,9 +151,15 @@ const LaptopInfo = () => {
               <div className='w-[17.25rem] md:w-[22.375rem] smMin:min-w-[28rem] lgMin:min-w-[17rem]'>
                 <InputLabel
                   text={'CPU-ს ნაკადი'}
+                  inputName='laptopCpuThreads'
                   holder={'365'}
                   hint={'მხოლოდ ციფრები'}
-                  {...register('laptopCpuThreads')}
+                  id='laptopCpuThreads'
+                  register={register}
+                  value={laptopCpuThreads}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                    setLaptopCpuThreads(e.target.value)
+                  }
                   errors={errors.laptopCpuThreads}
                   errorMessage={errors.laptopCpuThreads?.message}
                 />
@@ -148,9 +173,15 @@ const LaptopInfo = () => {
             <div className=' w-[25.5rem] md:w-[22.375rem] smMin:min-w-[28rem] '>
               <InputLabel
                 text={'ლეპტოპის RAM (GB)'}
+                inputName='laptopRam'
                 holder={'16'}
                 hint={'მხოლოდ ციფრები'}
-                {...register('laptopRam')}
+                id='laptopRam'
+                register={register}
+                value={laptopRam}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                  setLaptopRam(e.target.value)
+                }
                 errors={errors.laptopRam}
                 errorMessage={errors.laptopRam?.message}
               />
@@ -183,9 +214,15 @@ const LaptopInfo = () => {
             <div className=' smMin:min-w-[28rem]  w-[25.4375rem] md:mb-4 md:w-[22.375rem]'>
               <InputLabel
                 text={'შეძენის რიცხვი (არჩევითი)'}
+                inputName='date'
                 holder={'დდ / თთ / წწწწ'}
                 hint={''}
-                {...register('date')}
+                id='date'
+                register={register}
+                value={date}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                  setDate(e.target.value)
+                }
                 errors={errors.date}
                 errorMessage={errors.date?.message}
               />
@@ -193,9 +230,15 @@ const LaptopInfo = () => {
             <div className=' smMin:min-w-[28rem] w-[25.4375rem] md:w-[22.375rem]'>
               <InputLabel
                 text={'ლეპტოპის ფასი'}
+                inputName='laptopPrice'
                 holder={'0000'}
                 hint={'მხოლოდ ციფრები'}
-                {...register('laptopPrice')}
+                id='laptopPrice'
+                register={register}
+                value={laptopPrice}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                  setLaptopPrice(e.target.value)
+                }
                 errors={errors.laptopPrice}
                 errorMessage={errors.laptopPrice?.message}
               />

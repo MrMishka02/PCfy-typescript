@@ -75,7 +75,6 @@ const PersonalInfo = () => {
     formState: { errors },
   } = useForm<FormData>({
     mode: 'onChange',
-    reValidateMode: 'onChange',
     resolver: yupResolver(schema),
   })
 
@@ -84,6 +83,12 @@ const PersonalInfo = () => {
     console.log(data)
     navigate('/laptop-info')
   }
+
+  const [firstName, setName] = useState('')
+  const [surname, setSurname] = useState('')
+  const [email, setEmail] = useState('')
+  const [phoneNumber, setPhoneNumber] = useState('')
+
   return (
     <div className='m-0'>
       <CircleButton path={'/'} />
@@ -113,20 +118,32 @@ const PersonalInfo = () => {
         >
           <div className='w-[71.8%] sm:w-[22.375rem]'>
             <InputLabel
+              inputName='firstName'
               text={'სახელი'}
               holder={'გრიშა'}
+              id='firstName'
               hint={'მინიმუმ 2 სიმბოლო, ქართული ასოები'}
-              {...register('firstName')}
+              register={register}
+              value={firstName}
               errors={errors.firstName}
               errorMessage={errors.firstName?.message}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                setName(e.target.value)
+              }
             />
           </div>
           <div className='w-[71.8%] sm:mt-5 sm:w-[22.375rem]'>
             <InputLabel
+              inputName='surname'
               text={'გვარი'}
               holder={'ბაგრატიონი'}
               hint={'მინიმუმ 2 სიმბოლო, ქართული ასოები'}
-              {...register('surname')}
+              id='surname'
+              register={register}
+              value={surname}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                setSurname(e.target.value)
+              }
               errors={errors.surname}
               errorMessage={errors.surname?.message}
             />
@@ -158,18 +175,30 @@ const PersonalInfo = () => {
         sm:w-[22.375rem] '
         >
           <InputLabel
+            inputName='email'
             text={'მეილი'}
             holder={'grish22@redberry.ge'}
             hint={'უნდა მთავრდებოდეს @redberry.ge-ით'}
-            {...register('email')}
+            id='email'
+            register={register}
+            value={email}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setEmail(e.target.value)
+            }
             errors={errors.email}
             errorMessage={errors.email?.message}
           />
           <InputLabel
+            inputName='phoneNumber'
             text={'ტელეფონის ნომერი'}
             holder={'+995 598 00 07 01'}
             hint={'უნდა აკმაყოფილებდეს ქართული მობ-ნომრის ფორმატს'}
-            {...register('phoneNumber')}
+            id='phoneNumber'
+            register={register}
+            value={phoneNumber}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setPhoneNumber(e.target.value)
+            }
             errors={errors.phoneNumber}
             errorMessage={errors.phoneNumber?.message}
           />
