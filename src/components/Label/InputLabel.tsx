@@ -4,9 +4,11 @@ type Props = {
   text: string
   hint: string
   holder: string
+  errors: any
+  errorMessage: string | undefined
 }
 
-const InputLabel = ({ text, holder, hint }: Props) => {
+const InputLabel = ({ text, holder, hint, errors, errorMessage }: Props) => {
   return (
     <div className='flex flex-col'>
       <p
@@ -17,11 +19,15 @@ const InputLabel = ({ text, holder, hint }: Props) => {
       <input
         className={`h-[3.75rem] w-full rounded-[0.5rem] border-#8AC0E2
         border-2 border-solid pl-2 text-base outline-none 
-        
+        ${errors ? 'border-red-500' : 'border-[#BCBCBC] '}
         `}
         placeholder={holder}
       ></input>
-      <p className={`mt-2 text-xs 'text-black-500`}>{hint}</p>
+      {errors ? (
+        <p className={`mt-2 text-xs text-red-500`}>{errorMessage}</p>
+      ) : (
+        <p className={`mt-2 text-xs text-black-500`}>{hint}</p>
+      )}
     </div>
   )
 }

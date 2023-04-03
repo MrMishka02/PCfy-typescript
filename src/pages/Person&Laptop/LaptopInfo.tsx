@@ -10,9 +10,47 @@ import {
   LogoBottom,
 } from 'components'
 import { useNavigate } from 'react-router-dom'
+import * as yup from 'yup'
+import { yupResolver } from '@hookform/resolvers/yup'
+import { useForm } from 'react-hook-form'
+
+const schema = yup.object().shape({
+  laptopName: yup
+    .string()
+    .required('ლეპტოპის სახელი სავალდებულოა.')
+    .matches(
+      /^[ A-Za-z0-9_!@#$%^&*()_+=]*$/,
+      'მხოლოდ ლათინური ასოები, ციფრები და !@#$%^&*()_+='
+    ),
+  laptopBrand: yup.string().required(),
+  laptopCpu: yup.string().required(),
+  laptopCpuCores: yup.number().required('მხოლოდ ციფრები.'),
+  laptopCpuThreads: yup.number().required('მხოლოდ ციფრები.'),
+  laptopRam: yup.number().required('მხოლოდ ციფრები.'),
+  date: yup.number(),
+  laptopPrice: yup.number().required('მხოლოდ ციფრები.'),
+  laptopHardDrive: yup.string().required(),
+  laptopState: yup.string().required(),
+})
+type FormData = yup.InferType<typeof schema>
 
 const LaptopInfo = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormData>({
+    mode: 'onChange',
+    reValidateMode: 'onChange',
+    resolver: yupResolver(schema),
+  })
+
   const navigate = useNavigate()
+  const onSubmit = (data: FormData) => {
+    console.log(data)
+    navigate('/laptop-info')
+  }
+
   return (
     <div className='flex flex-col items-center justify-center overflow-x-hidden'>
       <CircleButton path={'/personal-info'} />
@@ -35,7 +73,8 @@ const LaptopInfo = () => {
           </p>
         </div>
       </div>
-      <div
+      <form
+        onSubmit={handleSubmit(onSubmit)}
         className='mt-2 flex flex-col items-center  rounded-[1.125rem] bg-[#FFFFFF]
       h-[34.4375rem] w-[24.375rem] gap-5 lgMin:gap-10'
       >
@@ -51,6 +90,9 @@ const LaptopInfo = () => {
               text={'ლეპტოპის სახელი'}
               holder={'HP'}
               hint={'ლათინური ასოები, ციფრები, !@#$%^&*()_+='}
+              {...register('laptopName')}
+              errors={errors.laptopName}
+              errorMessage={errors.laptopName?.message}
             />
           </div>
           <div className='mt-2 flex h-[7.25rem] w-[25.5rem] items-center md:w-[22.375rem] smMin:min-w-[28rem] lgMin:min-w-[28rem]'>
@@ -74,6 +116,9 @@ const LaptopInfo = () => {
                   text={'CPU-ს ბირთვი'}
                   holder={'14'}
                   hint={'მხოლოდ ციფრები'}
+                  {...register('laptopCpuCores')}
+                  errors={errors.laptopCpuCores}
+                  errorMessage={errors.laptopCpuCores?.message}
                 />
               </div>
               <div className='w-[17.25rem] md:w-[22.375rem] smMin:min-w-[28rem] lgMin:min-w-[17rem]'>
@@ -81,6 +126,9 @@ const LaptopInfo = () => {
                   text={'CPU-ს ნაკადი'}
                   holder={'365'}
                   hint={'მხოლოდ ციფრები'}
+                  {...register('laptopCpuThreads')}
+                  errors={errors.laptopCpuThreads}
+                  errorMessage={errors.laptopCpuThreads?.message}
                 />
               </div>
             </div>
@@ -94,6 +142,9 @@ const LaptopInfo = () => {
                 text={'ლეპტოპის RAM (GB)'}
                 holder={'16'}
                 hint={'მხოლოდ ციფრები'}
+                {...register('laptopRam')}
+                errors={errors.laptopRam}
+                errorMessage={errors.laptopRam?.message}
               />
             </div>
             <div className='smMin:min-w-[28rem] md:mt-4 md:w-[22.375rem]'>
@@ -126,6 +177,9 @@ const LaptopInfo = () => {
                 text={'შეძენის რიცხვი (არჩევითი)'}
                 holder={'დდ / თთ / წწწწ'}
                 hint={''}
+                {...register('date')}
+                errors={errors.date}
+                errorMessage={errors.date?.message}
               />
             </div>
             <div className=' smMin:min-w-[28rem] w-[25.4375rem] md:w-[22.375rem]'>
@@ -133,6 +187,9 @@ const LaptopInfo = () => {
                 text={'ლეპტოპის ფასი'}
                 holder={'0000'}
                 hint={'მხოლოდ ციფრები'}
+                {...register('laptopPrice')}
+                errors={errors.laptopPrice}
+                errorMessage={errors.laptopPrice?.message}
               />
             </div>
           </div>
@@ -160,11 +217,11 @@ const LaptopInfo = () => {
               უკან
             </p>
             <div className='h-[3.75rem] w-[13.7rem] md:h-[2.875rem] md:w-[10.125rem]'>
-              <Button text={'დამახსოვრება'} path={'/show-modal'} />
+              <Button text={'დამახსოვრება'} path={''} />
             </div>
           </div>
         </div>
-      </div>
+      </form>
       <div className='relative pb-6 flex w-full justify-center  sm:hidden mt-[78rem] mdMin:mt-[85rem] lgMin:mt-[65rem] '>
         <LogoBottom />
       </div>

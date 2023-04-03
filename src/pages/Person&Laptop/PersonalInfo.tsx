@@ -118,10 +118,9 @@ const PersonalInfo = () => {
               holder={'გრიშა'}
               hint={'მინიმუმ 2 სიმბოლო, ქართული ასოები'}
               {...register('firstName')}
+              errors={errors.firstName}
+              errorMessage={errors.firstName?.message}
             />
-            {errors?.firstName && (
-              <p className='text-red-500'>{errors.firstName.message}</p>
-            )}
           </div>
           <div className='w-[71.8%] sm:mt-5 sm:w-[22.375rem]'>
             <InputLabel
@@ -129,10 +128,9 @@ const PersonalInfo = () => {
               holder={'ბაგრატიონი'}
               hint={'მინიმუმ 2 სიმბოლო, ქართული ასოები'}
               {...register('surname')}
+              errors={errors.surname}
+              errorMessage={errors.surname?.message}
             />
-            {errors?.surname && (
-              <p className='text-red-500'>{errors.surname.message}</p>
-            )}
           </div>
         </div>
         <div
@@ -163,19 +161,17 @@ const PersonalInfo = () => {
             holder={'grish22@redberry.ge'}
             hint={'უნდა მთავრდებოდეს @redberry.ge-ით'}
             {...register('email')}
+            errors={errors.email}
+            errorMessage={errors.email?.message}
           />
-          {errors?.email && (
-            <p className='text-red-500'>{errors.email.message}</p>
-          )}
           <InputLabel
             text={'ტელეფონის ნომერი'}
             holder={'+995 598 00 07 01'}
             hint={'უნდა აკმაყოფილებდეს ქართული მობ-ნომრის ფორმატს'}
             {...register('phoneNumber')}
+            errors={errors.phoneNumber}
+            errorMessage={errors.phoneNumber?.message}
           />
-          {errors?.phoneNumber && (
-            <p className='text-red-500'>{errors.phoneNumber.message}</p>
-          )}
         </div>
         <div
           className='mt-[9.3rem]  h-[3.75rem] w-[11rem]
