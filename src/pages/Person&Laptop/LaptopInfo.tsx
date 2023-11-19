@@ -9,11 +9,12 @@ import {
   NextButton,
   LogoBottom,
 } from 'components'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from 'react-hook-form'
+import axios from 'axios'
 
 const schema = yup.object().shape({
   laptopName: yup
@@ -28,28 +29,37 @@ const schema = yup.object().shape({
   laptopCpuCores: yup.number().required().typeError('მხოლოდ ციფრები.'),
   laptopCpuThreads: yup.number().required().typeError('მხოლოდ ციფრები.'),
   laptopRam: yup.number().required().typeError('მხოლოდ ციფრები.'),
-  date: yup.number().typeError(''),
   laptopPrice: yup.number().required().typeError('მხოლოდ ციფრები.'),
-  laptopHardDrive: yup.string().required(),
-  laptopState: yup.string().required(),
 })
 type FormData = yup.InferType<typeof schema>
 
 const LaptopInfo = () => {
+  const [fetchedBrands, setFetchedBrands] = useState([] as any[])
+  const [fetchedCPU, setFetchedCPU] = useState([] as any[])
+  useEffect(() => {
+    const requestData = async () => {
+      const response = await axios.get(
+        'https://raw.githubusercontent.com/MrMishka02/pcfy_api/main/pcfy.json'
+      )
+      setFetchedBrands(response.data.brands)
+      setFetchedCPU(response.data.cpu)
+    }
+    requestData()
+  }, [])
+
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isValid },
   } = useForm<FormData>({
     mode: 'onChange',
     reValidateMode: 'onChange',
     resolver: yupResolver(schema),
   })
-
+  console.log(isValid)
   const navigate = useNavigate()
   const onSubmit = (data: FormData) => {
     console.log(data)
-    navigate('/laptop-info')
   }
 
   const [laptopName, setLaptopName] = useState('')
@@ -111,9 +121,10 @@ const LaptopInfo = () => {
           <div className='mt-2 flex h-[7.25rem] w-[25.5rem] items-center md:w-[22.375rem] smMin:min-w-[28rem] lgMin:min-w-[28rem]'>
             <Select
               defaultValue={'Brand'}
+              name='laptopBrand'
               errors={errors.laptopBrand}
-              //register={register}
-              //inputName='laptopBrand'
+              data={fetchedBrands}
+              register={register}
             ></Select>
           </div>
         </div>
@@ -129,9 +140,10 @@ const LaptopInfo = () => {
               <div className='w-[17.25rem] md:mb-6 md:w-[22.375rem] smMin:min-w-[28rem] lgMin:min-w-[17rem] lgMin:mt-2'>
                 <Select
                   defaultValue={'CPU'}
+                  name='laptopCpu'
                   errors={errors.laptopCpu}
-                  //register={register}
-                  //inputName='laptopCpu'
+                  data={fetchedCPU}
+                  register={register}
                 ></Select>
               </div>
               <div className='w-[17.25rem] md:mb-6 md:w-[22.375rem] smMin:min-w-[28rem] lgMin:min-w-[17rem]'>
@@ -226,7 +238,7 @@ const LaptopInfo = () => {
                   setDate(e.target.value)
                 }
                 errors=''
-                errorMessage={errors.date?.message}
+                errorMessage={''}
               />
             </div>
             <div className=' smMin:min-w-[28rem] w-[25.4375rem] md:w-[22.375rem]'>
@@ -270,7 +282,12 @@ const LaptopInfo = () => {
               უკან
             </p>
             <div className='h-[3.75rem] w-[13.7rem] md:h-[2.875rem] md:w-[10.125rem]'>
-              <NextButton text={'დამახსოვრება'} />
+              <NextButton
+                text={'დამახსოვრება'}
+                type='submit'
+                isValid={isValid}
+                path='/show-modal'
+              />
             </div>
           </div>
         </div>

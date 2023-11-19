@@ -1,29 +1,23 @@
-import { getInputValues, getSelectValues } from 'actions'
-import { useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
 type Props = {
   text: string
-  firstName?: string
-  surName?: string
-  selectedTeam?: string
-  selectedPosition?: string
+  type: any
+  path: string
+  isValid: boolean
 }
-function Button({
-  text,
-  firstName,
-  surName,
-  selectedTeam,
-  selectedPosition,
-}: Props) {
-  const dispatch = useDispatch()
-  const multipleActions = () => {
-    dispatch(getInputValues({ firstName, surName }))
-    dispatch(getSelectValues({ selectedTeam, selectedPosition }))
-  }
+function Button({ text, type, path, isValid }: Props) {
+  const navigate = useNavigate()
   return (
     <button
-      onClick={() => multipleActions()}
-      type='submit'
+      onClick={() => {
+        if (isValid) {
+          setTimeout(() => {
+            navigate(path)
+          }, 100)
+        }
+      }}
+      type={type}
       className='mb-[1.625rem] h-full w-full
     cursor-pointer rounded-[0.5rem] border-none bg-[#62A1EB]
     text-[1.2rem] font-[500] leading-6

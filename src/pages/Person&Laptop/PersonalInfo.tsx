@@ -6,11 +6,11 @@ import {
   NextButton,
   LogoBottom,
 } from 'components'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, SetStateAction } from 'react'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from 'react-hook-form'
-import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
 
 const schema = yup.object().shape({
   firstName: yup
@@ -45,26 +45,25 @@ type FormData = yup.InferType<typeof schema>
 
 const PersonalInfo = () => {
   const [fetchedTeam, setFetchedTeam] = useState([] as any[])
-  useEffect(() => {
-    fetch(
-      `https://pcfy-api.ibotchori.space/teams/get-teams?fbclid=IwAR1mfvr1aBDdk7FaOUgU9m_fCpvcZqWpHhUxNrRhGbGcp3LskS--2tOu_TU`
-    )
-      .then((response) => response.json())
-      .then((json) => setFetchedTeam(json))
-  }, [])
   const [fetchedPosition, setFetchedPosition] = useState([] as any[])
   useEffect(() => {
-    fetch(
-      `https://pcfy-api.ibotchori.space/positions/get-positions?fbclid=IwAR3jFUJagIVexBLdC2aZv2faBKQOt02z7ON-A2Ht-lpxXrUIJwW_hMWIU3I`
-    )
-      .then((response) => response.json())
-      .then((json) => setFetchedPosition(json))
+    const requestData = async () => {
+      const response = await axios.get(
+        'https://raw.githubusercontent.com/MrMishka02/pcfy_api/main/pcfy.json'
+      )
+      setFetchedTeam(response.data.teams)
+      setFetchedPosition(response.data.positions)
+    }
+    requestData()
   }, [])
+
   const [selectedTeam, setSelectedTeam] = useState('')
   function handleChangeTeam(event: { target: { value: string } }) {
     setSelectedTeam(event.target.value)
   }
+
   let filteredTeam = fetchedTeam.filter((item) => item.name === selectedTeam)
+
   const filteredPosition = fetchedPosition.filter(
     (item) => item.team_id === filteredTeam[0]?.id
   )
@@ -72,18 +71,16 @@ const PersonalInfo = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isValid },
   } = useForm<FormData>({
     mode: 'onChange',
     resolver: yupResolver(schema),
   })
 
-  const navigate = useNavigate()
   const onSubmit = (data: FormData) => {
     console.log(data)
-    navigate('/laptop-info')
   }
-
+  console.log(isValid)
   const [firstName, setName] = useState('')
   const [surname, setSurname] = useState('')
   const [email, setEmail] = useState('')
@@ -127,7 +124,7 @@ const PersonalInfo = () => {
               value={firstName}
               errors={errors.firstName}
               errorMessage={errors.firstName?.message}
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              onChange={(e: { target: { value: SetStateAction<string> } }) =>
                 setName(e.target.value)
               }
             />
@@ -141,7 +138,7 @@ const PersonalInfo = () => {
               id='surname'
               register={register}
               value={surname}
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              onChange={(e: { target: { value: SetStateAction<string> } }) =>
                 setSurname(e.target.value)
               }
               errors={errors.surname}
@@ -156,20 +153,18 @@ const PersonalInfo = () => {
         >
           <Select
             defaultValue={'თიმი'}
+            name='team'
             data={fetchedTeam}
             selectChange={handleChangeTeam}
-            //register={register}
-            {...register('team')}
-            //inputName='team'
+            register={register}
             errors={errors.team}
           ></Select>
           <Select
             defaultValue={'პოზიცია'}
+            name='position'
             data={filteredPosition}
             disabled={selectedTeam === '' ? true : false}
-            //register={register}
-            {...register('position')}
-            // inputName='position'
+            register={register}
             errors={errors.position}
           ></Select>
         </div>
@@ -186,7 +181,7 @@ const PersonalInfo = () => {
             id='email'
             register={register}
             value={email}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            onChange={(e: { target: { value: SetStateAction<string> } }) =>
               setEmail(e.target.value)
             }
             errors={errors.email}
@@ -200,7 +195,7 @@ const PersonalInfo = () => {
             id='phoneNumber'
             register={register}
             value={phoneNumber}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            onChange={(e: { target: { value: SetStateAction<string> } }) =>
               setPhoneNumber(e.target.value)
             }
             errors={errors.phoneNumber}
@@ -212,7 +207,12 @@ const PersonalInfo = () => {
          xl:mt-[8rem] xl:h-[4rem] sm:mt-[4.6rem] mx-auto
         sm:h-[2.875rem] sm:w-[8.25rem] smMin:float-right smMin:mr-[15%] mr-8%'
         >
-          <NextButton text={'შემდეგი'} />
+          <NextButton
+            text={'შემდეგი'}
+            type='submit'
+            isValid={isValid}
+            path='/laptop-info'
+          />
         </div>
       </form>
       <div className='mt-[4.3rem] mb-6 flex w-full justify-center sm:hidden'>

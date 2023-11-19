@@ -8,6 +8,7 @@ function Button({ text, path }: Props) {
   const navigate = useNavigate()
   return (
     <button
+      type='button'
       onClick={() => {
         navigate(path)
       }}
