@@ -80,7 +80,6 @@ const PersonalInfo = () => {
   const onSubmit = (data: FormData) => {
     console.log(data)
   }
-  console.log(isValid)
   const [firstName, setName] = useState('')
   const [surname, setSurname] = useState('')
   const [email, setEmail] = useState('')

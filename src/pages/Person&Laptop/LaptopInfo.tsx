@@ -56,7 +56,6 @@ const LaptopInfo = () => {
     reValidateMode: 'onChange',
     resolver: yupResolver(schema),
   })
-  console.log(isValid)
   const navigate = useNavigate()
   const onSubmit = (data: FormData) => {
     console.log(data)
