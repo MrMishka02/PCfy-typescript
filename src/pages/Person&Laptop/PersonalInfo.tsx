@@ -10,6 +10,7 @@ import { useState, useEffect } from 'react'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from 'react-hook-form'
+import useFormPersist from 'react-hook-form-persist'
 import axios from 'axios'
 
 const schema = yup.object().shape({
@@ -71,11 +72,15 @@ const PersonalInfo = () => {
   const {
     register,
     handleSubmit,
+    watch,
+    setValue,
     formState: { errors, isValid },
   } = useForm<FormData>({
     mode: 'onChange',
     resolver: yupResolver(schema),
   })
+
+  useFormPersist('form', { watch, setValue })
 
   const onSubmit = (data: FormData) => {
     console.log(data)
