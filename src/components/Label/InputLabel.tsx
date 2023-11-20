@@ -6,11 +6,9 @@ type Props = {
   holder: string
   errors: any
   errorMessage: string | undefined
-  inputName: string
+  name: string
   register: any
-  value: string
   id: string
-  onChange: any
 }
 
 const InputLabel = ({
@@ -19,24 +17,23 @@ const InputLabel = ({
   hint,
   errors,
   errorMessage,
-  inputName,
+  name,
   register,
-  onChange,
-  value,
   id,
 }: Props) => {
   return (
     <div className='flex flex-col'>
-      <p
+      <label
+        htmlFor={name}
         className={`text-[black] mb-2 h-[1.5rem] w-[18.1rem]  text-[1.125rem] font-[500] leading-[1.31rem]`}
       >
         {text}
-      </p>
+      </label>
       <input
-        onChange={onChange}
         id={id}
-        name={inputName}
-        {...register(inputName)}
+        name={name}
+        key={name}
+        {...register(name)}
         className={`h-[3.75rem] w-full rounded-[0.5rem] border-#8AC0E2
         border-2 border-solid pl-2 text-base outline-none
         ${errors ? 'border-red-500' : 'border-[#BCBCBC] '}

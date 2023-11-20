@@ -6,10 +6,11 @@ import {
   NextButton,
   LogoBottom,
 } from 'components'
-import { useState, useEffect, SetStateAction } from 'react'
+import { useState, useEffect } from 'react'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from 'react-hook-form'
+import useFormPersist from 'react-hook-form-persist'
 import axios from 'axios'
 
 const schema = yup.object().shape({
@@ -58,7 +59,7 @@ const PersonalInfo = () => {
   }, [])
 
   const [selectedTeam, setSelectedTeam] = useState('')
-  function handleChangeTeam(event: { target: { value: string } }) {
+  function handleChangeTeam(event: any) {
     setSelectedTeam(event.target.value)
   }
 
@@ -71,19 +72,19 @@ const PersonalInfo = () => {
   const {
     register,
     handleSubmit,
+    watch,
+    setValue,
     formState: { errors, isValid },
   } = useForm<FormData>({
     mode: 'onChange',
     resolver: yupResolver(schema),
   })
 
+  useFormPersist('form', { watch, setValue })
+
   const onSubmit = (data: FormData) => {
-    console.log(data.firstName)
+    console.log(data)
   }
-  const [firstName, setName] = useState('')
-  const [surname, setSurname] = useState('')
-  const [email, setEmail] = useState('')
-  const [phoneNumber, setPhoneNumber] = useState('')
 
   return (
     <div className='m-0'>
@@ -114,32 +115,24 @@ const PersonalInfo = () => {
         >
           <div className='w-[71.8%] sm:w-[22.375rem]'>
             <InputLabel
-              inputName='firstName'
+              name='firstName'
               text={'სახელი'}
               holder={'გრიშა'}
               id='firstName'
               hint={'მინიმუმ 2 სიმბოლო, ქართული ასოები'}
               register={register}
-              value={firstName}
               errors={errors.firstName}
               errorMessage={errors.firstName?.message}
-              onChange={(e: { target: { value: SetStateAction<string> } }) =>
-                setName(e.target.value)
-              }
             />
           </div>
           <div className='w-[71.8%] sm:mt-5 sm:w-[22.375rem]'>
             <InputLabel
-              inputName='surname'
+              name='surName'
               text={'გვარი'}
               holder={'ბაგრატიონი'}
               hint={'მინიმუმ 2 სიმბოლო, ქართული ასოები'}
-              id='surname'
+              id='surName'
               register={register}
-              value={surname}
-              onChange={(e: { target: { value: SetStateAction<string> } }) =>
-                setSurname(e.target.value)
-              }
               errors={errors.surname}
               errorMessage={errors.surname?.message}
             />
@@ -173,30 +166,22 @@ const PersonalInfo = () => {
         sm:w-[22.375rem] '
         >
           <InputLabel
-            inputName='email'
+            name='email'
             text={'მეილი'}
             holder={'grish22@redberry.ge'}
             hint={'უნდა მთავრდებოდეს @redberry.ge-ით'}
             id='email'
             register={register}
-            value={email}
-            onChange={(e: { target: { value: SetStateAction<string> } }) =>
-              setEmail(e.target.value)
-            }
             errors={errors.email}
             errorMessage={errors.email?.message}
           />
           <InputLabel
-            inputName='phoneNumber'
+            name='phoneNumber'
             text={'ტელეფონის ნომერი'}
             holder={'+995 598 00 07 01'}
             hint={'უნდა აკმაყოფილებდეს ქართული მობ-ნომრის ფორმატს'}
             id='phoneNumber'
             register={register}
-            value={phoneNumber}
-            onChange={(e: { target: { value: SetStateAction<string> } }) =>
-              setPhoneNumber(e.target.value)
-            }
             errors={errors.phoneNumber}
             errorMessage={errors.phoneNumber?.message}
           />
