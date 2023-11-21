@@ -20,7 +20,10 @@ const ModalPage = () => {
           </div>
           <p
             className='mb-11 text-[1.25rem] font-medium leading-6 text-[#0089A7] hover:cursor-pointer'
-            onClick={() => navigate('/')}
+            onClick={() => {
+              navigate('/')
+              localStorage.clear()
+            }}
           >
             მთავარი
           </p>

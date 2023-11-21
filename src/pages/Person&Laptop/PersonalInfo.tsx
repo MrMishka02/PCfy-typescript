@@ -19,7 +19,7 @@ const schema = yup.object().shape({
     .min(2, 'მინიმუმ 2 სიმბოლო.')
     .matches(/^[ა-ჰ]+$/, 'მხოლოდ ქართული სიმბოლოები.')
     .required('სახელი სავალდებულოა.'),
-  surname: yup
+  surName: yup
     .string()
     .min(2, 'მინიმუმ 2 სიმბოლო.')
     .matches(/^[ა-ჰ]+$/, 'მხოლოდ ქართული სიმბოლოები.')
@@ -80,10 +80,10 @@ const PersonalInfo = () => {
     resolver: yupResolver(schema),
   })
 
-  useFormPersist('form', { watch, setValue })
+  useFormPersist('PersonalInfo', { watch, setValue })
 
   const onSubmit = (data: FormData) => {
-    console.log(data)
+    localStorage.setItem('PersonalInfo', JSON.stringify(data))
   }
 
   return (
@@ -133,8 +133,8 @@ const PersonalInfo = () => {
               hint={'მინიმუმ 2 სიმბოლო, ქართული ასოები'}
               id='surName'
               register={register}
-              errors={errors.surname}
-              errorMessage={errors.surname?.message}
+              errors={errors.surName}
+              errorMessage={errors.surName?.message}
             />
           </div>
         </div>

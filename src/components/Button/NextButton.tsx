@@ -14,6 +14,7 @@ function Button({ text, type, path, isValid }: Props) {
         if (isValid) {
           setTimeout(() => {
             navigate(path)
+            sessionStorage.clear()
           }, 100)
         }
       }}

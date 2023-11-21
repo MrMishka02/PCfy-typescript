@@ -14,6 +14,7 @@ import { useNavigate } from 'react-router-dom'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from 'react-hook-form'
+import useFormPersist from 'react-hook-form-persist'
 import axios from 'axios'
 
 const schema = yup.object().shape({
@@ -30,6 +31,8 @@ const schema = yup.object().shape({
   laptopCpuThreads: yup.number().required().typeError('მხოლოდ ციფრები.'),
   laptopRam: yup.number().required().typeError('მხოლოდ ციფრები.'),
   laptopPrice: yup.number().required().typeError('მხოლოდ ციფრები.'),
+  memory: yup.string().required(),
+  condition: yup.string().required(),
 })
 type FormData = yup.InferType<typeof schema>
 
@@ -50,15 +53,18 @@ const LaptopInfo = () => {
   const {
     register,
     handleSubmit,
+    watch,
+    setValue,
     formState: { errors, isValid },
   } = useForm<FormData>({
     mode: 'onChange',
     reValidateMode: 'onChange',
     resolver: yupResolver(schema),
   })
+  useFormPersist('LaptopInfo', { watch, setValue })
   const navigate = useNavigate()
   const onSubmit = (data: FormData) => {
-    console.log(data)
+    localStorage.setItem('LaptopInfo', JSON.stringify(data))
   }
 
   return (
@@ -185,8 +191,18 @@ const LaptopInfo = () => {
                 მეხსიერების ტიპი
               </p>
               <div className=' flex h-full w-[15rem] justify-between md:w-[14.2rem] lgMin:mr-0'>
-                <RadioButton value={'SSD'} name={'memory'} text={'SSD'} />
-                <RadioButton value={'HDD'} name={'memory'} text={'HDD'} />
+                <RadioButton
+                  value={'SSD'}
+                  name={'memory'}
+                  text={'SSD'}
+                  register={register}
+                />
+                <RadioButton
+                  value={'HDD'}
+                  name={'memory'}
+                  text={'HDD'}
+                  register={register}
+                />
               </div>
             </div>
           </div>
@@ -235,8 +251,18 @@ const LaptopInfo = () => {
               ლეპტოპის მდგომარეობა
             </p>
             <div className='flex w-[15rem] justify-between '>
-              <RadioButton value={'new'} name={'condition'} text={'ახალი'} />
-              <RadioButton value={'used'} name={'condition'} text={'მეორადი'} />
+              <RadioButton
+                value={'new'}
+                name={'condition'}
+                text={'ახალი'}
+                register={register}
+              />
+              <RadioButton
+                value={'used'}
+                name={'condition'}
+                text={'მეორადი'}
+                register={register}
+              />
             </div>
           </div>
           <div
