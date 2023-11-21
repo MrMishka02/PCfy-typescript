@@ -11,6 +11,7 @@ function Button({ text, path }: Props) {
       type='button'
       onClick={() => {
         navigate(path)
+        localStorage.clear()
       }}
       className='mb-[1.625rem] h-full w-full
     cursor-pointer rounded-[0.5rem] border-none bg-[#62A1EB]
