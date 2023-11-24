@@ -61,6 +61,7 @@ const PersonalInfo = () => {
   const [selectedTeam, setSelectedTeam] = useState('')
   function handleChangeTeam(event: any) {
     setSelectedTeam(event.target.value)
+    sessionStorage.setItem('team', event.target.value)
   }
 
   let filteredTeam = fetchedTeam.filter((item) => item.name === selectedTeam)
