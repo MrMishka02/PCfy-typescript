@@ -61,7 +61,6 @@ const PersonalInfo = () => {
   const [selectedTeam, setSelectedTeam] = useState('')
   function handleChangeTeam(event: any) {
     setSelectedTeam(event.target.value)
-    sessionStorage.setItem('team', event.target.value)
   }
 
   let filteredTeam = fetchedTeam.filter((item) => item.name === selectedTeam)
@@ -85,6 +84,16 @@ const PersonalInfo = () => {
 
   const onSubmit = (data: FormData) => {
     localStorage.setItem('PersonalInfo', JSON.stringify(data))
+    fetch(
+      'mongodb+srv://mrmishka:Coding0205@cluster0.fy5yilt.mongodb.net/?retryWrites=true&w=majority',
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      })
+      .then(() => {
+        console.log('data created')
+    })
   }
 
   return (
@@ -196,7 +205,7 @@ const PersonalInfo = () => {
             text={'შემდეგი'}
             type='submit'
             isValid={isValid}
-            path='/laptop-info'
+            path=''
           />
         </div>
       </form>
