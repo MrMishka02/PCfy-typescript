@@ -84,6 +84,16 @@ const PersonalInfo = () => {
 
   const onSubmit = (data: FormData) => {
     localStorage.setItem('PersonalInfo', JSON.stringify(data))
+    fetch(
+      'mongodb+srv://mrmishka:Coding0205@cluster0.fy5yilt.mongodb.net/?retryWrites=true&w=majority',
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      })
+      .then(() => {
+        console.log('data created')
+    })
   }
 
   return (
@@ -195,7 +205,7 @@ const PersonalInfo = () => {
             text={'შემდეგი'}
             type='submit'
             isValid={isValid}
-            path='/laptop-info'
+            path=''
           />
         </div>
       </form>
