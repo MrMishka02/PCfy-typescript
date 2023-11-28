@@ -1,7 +1,6 @@
 import { CircleButton, InfoHeadLabel, PCList } from 'components'
-import React from 'react'
 
-const entriesList = () => {
+const EntriesList = () => {
   return (
     <div className='flex h-full w-full flex-col items-center bg-[#FFFFFF] overflow-x-hidden'>
       <CircleButton path={'/'} />
@@ -14,16 +13,9 @@ const entriesList = () => {
       sm:flex sm:w-[24.375rem] sm:flex-col sm:items-center sm:gap-4'
       >
         <PCList />
-        <PCList />
-        <PCList />
-        <PCList />
-        <PCList />
-        <PCList />
-        <PCList />
-        <PCList />
       </div>
     </div>
   )
 }
 
-export default entriesList
+export default EntriesList

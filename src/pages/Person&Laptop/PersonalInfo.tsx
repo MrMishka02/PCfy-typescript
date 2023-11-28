@@ -84,13 +84,6 @@ const PersonalInfo = () => {
 
   const onSubmit = (data: FormData) => {
     localStorage.setItem('PersonalInfo', JSON.stringify(data))
-    fetch('http://localhost:3001/create', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data),
-    }).then(() => {
-      console.log('data created')
-    })
   }
 
   return (
