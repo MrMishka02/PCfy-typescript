@@ -82,39 +82,8 @@ const PersonalInfo = () => {
 
   useFormPersist('PersonalInfo', { watch, setValue })
 
-  const onSubmit = (formData: FormData) => {
-    // localStorage.setItem('PersonalInfo', JSON.stringify(data))
-    const data = JSON.stringify({
-      collectiot: 'personalinfos',
-      database: 'test',
-      dataSource: 'Cluster0',
-      document: {
-        firstName: formData.firstName,
-        surName: formData.surName,
-        team: formData.team,
-        position: formData.position,
-        email: formData.email,
-        phoneNumber: formData.phoneNumber,
-      },
-    })
-    const config = {
-      method: 'post',
-      url: 'https://eu-central-1.aws.data.mongodb-api.com/app/data-crryp/endpoint/data/v1/action/insertOne',
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Request-Headers': '*',
-        'api-key':
-          'JQ4hMcPz8MR6VAf5UBgPXQmz01l9U1BJyk4w4h00V0JkBcjEsQULyN7s1zGxmvbF',
-      },
-      data: data,
-    }
-    axios(config)
-      .then(function (response) {
-        console.log(JSON.stringify(response.data))
-      })
-      .catch(function (error) {
-        console.log(error)
-      })
+  const onSubmit = (data: FormData) => {
+    localStorage.setItem('PersonalInfo', JSON.stringify(data))
   }
 
   return (
