@@ -6,8 +6,8 @@ const PCList = () => {
   return (
     <div
       className='flex h-[12.8125rem] w-[35.1875rem] items-center
-    rounded-[1.25rem] border-[0.0625rem] border-solid border-[#AED1EA] bg-[#EAFAFF]
-    sm:ml-0 sm:h-[7.6875rem] sm:w-[22.375rem]'
+      rounded-[1.25rem] border-[0.0625rem] border-solid border-[#AED1EA] bg-[#EAFAFF]
+      sm:ml-0 sm:h-[7.6875rem] sm:w-[22.375rem]'
     >
       <img
         src={pcImg}
@@ -16,15 +16,17 @@ const PCList = () => {
       />
       <div className='ml-6 flex h-[56%] w-[40%] flex-col justify-between'>
         <p className='text-lg font-semibold text-[#2E2E2E] sm:text-sm sm:font-medium'>
-          ირინე ჩანქსელიანი
+          ირინა ჩანქსელიანი
         </p>
         <p className='text-lg font-medium text-[#2E2E2E] sm:font-normal'>
           Pentium II
         </p>
         <p
           className='mt-4 select-none text-base text-[#4386A9]
-        underline hover:cursor-pointer sm:mt-2 sm:text-sm'
-          onClick={() => navigate('/info-page')}
+          underline hover:cursor-pointer sm:mt-2 sm:text-sm'
+          onClick={() => {
+            navigate('/info-page')
+          }}
         >
           მეტის ნახვა
         </p>
