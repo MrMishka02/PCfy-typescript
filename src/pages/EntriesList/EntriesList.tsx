@@ -1,7 +1,35 @@
 import { CircleButton, InfoHeadLabel, PCList } from 'components'
-import React from 'react'
+import axios from 'axios'
+import { useEffect, useState } from 'react'
 
-const entriesList = () => {
+const EntriesList = () => {
+  const [data, setData] = useState()
+  useEffect(() => {
+    const data = JSON.stringify({
+      collection: 'personalinfos',
+      database: 'test',
+      dataSource: 'Cluster0',
+    })
+    const config = {
+      method: 'post',
+      url: 'https://eu-central-1.aws.data.mongodb-api.com/app/data-crryp/endpoint/data/v1/action/find',
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Request-Headers': '*',
+        'api-key':
+          'JQ4hMcPz8MR6VAf5UBgPXQmz01l9U1BJyk4w4h00V0JkBcjEsQULyN7s1zGxmvbF',
+      },
+      data: data,
+    }
+    axios(config)
+      .then((response) => {
+        setData(response.data)
+      })
+      .catch(function (error) {
+        console.log(error)
+      })
+  }, [])
+  console.log(data)
   return (
     <div className='flex h-full w-full flex-col items-center bg-[#FFFFFF] overflow-x-hidden'>
       <CircleButton path={'/'} />
@@ -14,16 +42,9 @@ const entriesList = () => {
       sm:flex sm:w-[24.375rem] sm:flex-col sm:items-center sm:gap-4'
       >
         <PCList />
-        <PCList />
-        <PCList />
-        <PCList />
-        <PCList />
-        <PCList />
-        <PCList />
-        <PCList />
       </div>
     </div>
   )
 }
 
-export default entriesList
+export default EntriesList
