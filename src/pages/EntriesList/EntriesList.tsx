@@ -1,6 +1,22 @@
+import axios from 'axios'
 import { CircleButton, InfoHeadLabel, PCList } from 'components'
+import { useEffect, useState } from 'react'
 
 const EntriesList = () => {
+  const [pcfyData, setPCfyData] = useState([] as any[])
+
+  useEffect(() => {
+    const fetchPCfyData = async () => {
+      const response = await axios.get('http://localhost:4000/api/pcfyinfo')
+
+      if (response.statusText === 'OK') {
+        setPCfyData(response.data)
+      }
+    }
+
+    fetchPCfyData()
+  }, [])
+  console.log(pcfyData)
   return (
     <div className='flex h-full w-full flex-col items-center bg-[#FFFFFF] overflow-x-hidden'>
       <CircleButton path={'/'} />
@@ -12,7 +28,11 @@ const EntriesList = () => {
         xl:flex xl:w-[30rem] xl:flex-col xl:items-center
       sm:flex sm:w-[24.375rem] sm:flex-col sm:items-center sm:gap-4'
       >
-        <PCList />
+        <>
+          {pcfyData.map((userData, _id) => (
+            <PCList key={_id} userData={userData} />
+          ))}
+        </>
       </div>
     </div>
   )

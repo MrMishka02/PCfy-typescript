@@ -1,8 +1,9 @@
 import { useNavigate } from 'react-router-dom'
 import pcImg from 'assets/img/pc.png'
 
-const PCList = () => {
+const PCList = (userData: any) => {
   const navigate = useNavigate()
+  console.log({userData}.userData.firstName)
   return (
     <div
       className='flex h-[12.8125rem] w-[35.1875rem] items-center
@@ -16,7 +17,7 @@ const PCList = () => {
       />
       <div className='ml-6 flex h-[56%] w-[40%] flex-col justify-between'>
         <p className='text-lg font-semibold text-[#2E2E2E] sm:text-sm sm:font-medium'>
-          ირინა ჩანქსელიანი
+          {{ userData }.userData.firstName}
         </p>
         <p className='text-lg font-medium text-[#2E2E2E] sm:font-normal'>
           Pentium II
