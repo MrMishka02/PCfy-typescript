@@ -82,8 +82,13 @@ const PersonalInfo = () => {
 
   useFormPersist('PersonalInfo', { watch, setValue })
 
-  const onSubmit = (data: FormData) => {
+  const onSubmit = async (data: FormData) => {
     localStorage.setItem('PersonalInfo', JSON.stringify(data))
+    const response = await axios.post(
+      'http://localhost:4000/api/pcfyinfo',
+      data
+    )
+    console.log(response.status, response.statusText)
   }
 
   return (
