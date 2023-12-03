@@ -83,12 +83,19 @@ const PersonalInfo = () => {
   useFormPersist('PersonalInfo', { watch, setValue })
 
   const onSubmit = async (data: FormData) => {
-    localStorage.setItem('PersonalInfo', JSON.stringify(data))
-    const response = await axios.post(
-      'http://localhost:4000/api/pcfyinfo',
-      data
-    )
-    console.log(response.status, response.statusText)
+    // localStorage.setItem('PersonalInfo', JSON.stringify(data))
+    await axios
+      .post('http://localhost:4000/api/pcfyinfo', data)
+      .then((response) => {
+        console.log(response.data)
+      })
+      .catch((error) => {
+        if (error.response.status === 400) {
+          alert(error.response.data.error)
+        } else {
+          console.log('Error: ', error.message)
+        }
+      })
   }
 
   return (
