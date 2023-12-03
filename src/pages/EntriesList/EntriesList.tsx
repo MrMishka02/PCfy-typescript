@@ -2,8 +2,21 @@ import axios from 'axios'
 import { CircleButton, InfoHeadLabel, PCList } from 'components'
 import { useEffect, useState } from 'react'
 
+type pcfyDataT = {
+  createdAt: string
+  email: string
+  firstName: string
+  phoneNumber: string
+  position: string
+  surName: string
+  team: string
+  updatedAt: string
+  __v: number
+  _id: string
+}
+
 const EntriesList = () => {
-  const [pcfyData, setPCfyData] = useState([] as any[])
+  const [pcfyData, setPCfyData] = useState([] as pcfyDataT[])
 
   useEffect(() => {
     const fetchPCfyData = async () => {
@@ -29,8 +42,8 @@ const EntriesList = () => {
       sm:flex sm:w-[24.375rem] sm:flex-col sm:items-center sm:gap-4'
       >
         <>
-          {pcfyData.map((userData, _id) => (
-            <PCList key={_id} userData={userData} />
+          {pcfyData.map((userData) => (
+            <PCList key={userData._id} userData={userData} />
           ))}
         </>
       </div>
