@@ -7,7 +7,38 @@ import {
 } from 'components/'
 import laptop from 'assets/img/laptop.png'
 
+type pcfyDataT = {
+  firstName: string
+  surName: string
+  team: string
+  position: string
+  email: string
+  phoneNumber: string
+  laptopName: string
+  laptopBrand: string
+  laptopCpu: string
+  laptopCpuCores: number
+  laptopCpuThreads: number
+  laptopRam: number
+  laptopPrice: number
+  memory: number
+  condition: string
+  purchaseDate: string
+  createdAt: string
+  updatedAt: string
+  __v: number
+  _id: string
+}
+
 const InfoPage = () => {
+  const storageKey: string = 'pcfyInfo'
+  const value: string | null = sessionStorage.getItem(storageKey)
+  let pcfyInfo
+  if (value !== null) {
+    pcfyInfo = JSON.parse(value)
+  }
+  let personalData: pcfyDataT = pcfyInfo.personalData
+  let laptopData: pcfyDataT = pcfyInfo.laptopData
   return (
     <div className='flex h-full w-full flex-col items-center bg-[#FFFFFF]'>
       <CircleButton path={'/entries-list'} />
@@ -20,7 +51,7 @@ const InfoPage = () => {
             className='w-[36rem] sm:w-[22.375rem]'
           />
         </div>
-        <div className='flex w-[50%] sm:mt-4 sm:w-full'>
+        <div className='flex ml-20 w-[50%] sm:mt-4 sm:w-full'>
           <div className='ml-4 mt-8 w-[30%] sm:ml-10 sm:mt-0 sm:w-[45%]'>
             <InfoLabel text={'სახელი: '} />
             <InfoLabel text={'თიმი: '} />
@@ -28,12 +59,14 @@ const InfoPage = () => {
             <InfoLabel text={'მეილი: '} />
             <InfoLabel text={'ტელ. ნომერი: '} />
           </div>
-          <div className='ml-10 mt-8 w-[50%] sm:ml-0 sm:mt-0 sm:w-[50%] '>
-            <InfoText text={'აკაკი წერეთელი'} />
-            <InfoText text={'დიზაინერები'} />
-            <InfoText text={'ილუსტრატორი'} />
-            <InfoText text={'ako@redberry.ge'} />
-            <InfoText text={'+995 583 45 28 33'} />
+          <div className='ml-4 mt-8 w-[55%] sm:ml-0 sm:mt-0 sm:w-[50%] '>
+            <InfoText
+              text={personalData.firstName + ' ' + personalData.surName}
+            />
+            <InfoText text={personalData.team} />
+            <InfoText text={personalData.position} />
+            <InfoText text={personalData.email} />
+            <InfoText text={personalData.phoneNumber} />
           </div>
         </div>
       </div>
@@ -49,10 +82,10 @@ const InfoPage = () => {
             <InfoLabel text={'მეხსიერების ტიპი: '} />
           </div>
           <div className='w-[45%] sm:w-[46%]'>
-            <InfoText text={'Razor Bla Bla'} />
-            <InfoText text={'HP'} />
-            <InfoText text={'16'} />
-            <InfoText text={'SSD'} />
+            <InfoText text={laptopData.laptopName} />
+            <InfoText text={laptopData.laptopBrand} />
+            <InfoText text={String(laptopData.laptopRam)} />
+            <InfoText text={String(laptopData.memory)} />
           </div>
         </div>
         <div className='flex w-[50%] pl-14 sm:ml-10 sm:mt-2 sm:w-full sm:pl-0'>
@@ -62,9 +95,9 @@ const InfoPage = () => {
             <InfoLabel text={'CPU-ს ნაკადი: '} />
           </div>
           <div className='w-[50%] sm:w-[46%]'>
-            <InfoText text={'Intel i5'} />
-            <InfoText text={'12'} />
-            <InfoText text={'16'} />
+            <InfoText text={laptopData.laptopCpu} />
+            <InfoText text={String(laptopData.laptopCpuCores)} />
+            <InfoText text={String(laptopData.laptopCpuThreads)} />
           </div>
         </div>
       </div>
@@ -83,8 +116,8 @@ const InfoPage = () => {
             <InfoLabel text={'ლეპტოპის ფასი: '} />
           </div>
           <div className='w-[45%] sm:w-[50%]'>
-            <InfoText text={'მეორადი'} />
-            <InfoText text={'1500 ლ'} />
+            <InfoText text={laptopData.condition} />
+            <InfoText text={laptopData.laptopPrice + ' ლ'} />
           </div>
         </div>
         <div className='flex w-[50%] sm:w-full'>
@@ -92,7 +125,7 @@ const InfoPage = () => {
             <InfoLabel text={'შეძენის რიცხვი: '} />
           </div>
           <div className='w-[50%] pl-7 sm:w-[50%] sm:pl-0'>
-            <InfoText text={'12 / 06 / 2130'} />
+            <InfoText text={laptopData.purchaseDate} />
           </div>
         </div>
       </div>

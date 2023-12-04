@@ -2,13 +2,26 @@ import { useNavigate } from 'react-router-dom'
 import pcImg from 'assets/img/pc.png'
 
 type pcfyDataT = {
+  personalData: {
+    firstName: string
+    surName: string
+    team: string
+    position: string
+    email: string
+    phoneNumber: string
+  }
+  laptopData: {
+    laptopName: string
+    laptopBrand: string
+    laptopCpu: string
+    laptopCpuCores: number
+    laptopCpuThreads: number
+    laptopRam: number
+    laptopPrice: number
+    memory: number
+    condition: string
+  }
   createdAt: string
-  email: string
-  firstName: string
-  phoneNumber: string
-  position: string
-  surName: string
-  team: string
   updatedAt: string
   __v: number
   _id: string
@@ -16,7 +29,6 @@ type pcfyDataT = {
 
 const PCList = ({ userData }: { userData: pcfyDataT }) => {
   const navigate = useNavigate()
-  console.log(userData)
   return (
     <div
       className='flex h-[12.8125rem] w-[35.1875rem] items-center
@@ -30,16 +42,21 @@ const PCList = ({ userData }: { userData: pcfyDataT }) => {
       />
       <div className='ml-6 flex h-[56%] w-[40%] flex-col justify-between'>
         <p className='text-lg font-semibold text-[#2E2E2E] sm:text-sm sm:font-medium'>
-          {userData.firstName + ' ' + userData.surName}
+          {userData.personalData.firstName +
+            ' ' +
+            userData.personalData.surName}
         </p>
         <p className='text-lg font-medium text-[#2E2E2E] sm:font-normal'>
-          Pentium II
+          {userData.laptopData.laptopBrand +
+            ' ' +
+            userData.laptopData.laptopName}
         </p>
         <p
           className='mt-4 select-none text-base text-[#4386A9]
           underline hover:cursor-pointer sm:mt-2 sm:text-sm'
           onClick={() => {
             navigate('/info-page')
+            sessionStorage.setItem('pcfyInfo', JSON.stringify(userData))
           }}
         >
           მეტის ნახვა

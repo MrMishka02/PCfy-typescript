@@ -33,6 +33,7 @@ const schema = yup.object().shape({
   laptopPrice: yup.number().required().typeError('მხოლოდ ციფრები.'),
   memory: yup.string().required(),
   condition: yup.string().required(),
+  purchaseDate: yup.string().optional(),
 })
 type FormData = yup.InferType<typeof schema>
 
@@ -61,10 +62,34 @@ const LaptopInfo = () => {
     reValidateMode: 'onChange',
     resolver: yupResolver(schema),
   })
+
   useFormPersist('LaptopInfo', { watch, setValue })
+
   const navigate = useNavigate()
-  const onSubmit = (data: FormData) => {
-    localStorage.setItem('LaptopInfo', JSON.stringify(data))
+
+  const onSubmit = async (laptopData: FormData) => {
+    const storageKey: string = 'PersonalInfo'
+    const personalInfo: string | null = localStorage.getItem(storageKey)
+    let personalData
+    if (personalInfo !== null) {
+      personalData = JSON.parse(personalInfo)
+    }
+    const combinedData = {
+      personalData,
+      laptopData,
+    }
+    await axios
+      .post('http://localhost:4000/api/pcfyinfo', combinedData)
+      .then((response) => {
+        console.log('Added to DB')
+      })
+      .catch((error) => {
+        if (error.response.status === 400) {
+          alert(error.response.data.error)
+        } else {
+          console.log('Error: ', error.message)
+        }
+      })
   }
 
   return (
@@ -221,10 +246,10 @@ const LaptopInfo = () => {
             <div className=' smMin:min-w-[28rem]  w-[25.4375rem] md:mb-4 md:w-[22.375rem]'>
               <InputLabel
                 text={'შეძენის რიცხვი (არჩევითი)'}
-                name='date'
+                name='purchaseDate'
                 holder={'დდ / თთ / წწწწ'}
                 hint={''}
-                id='date'
+                id='purchaseDate'
                 register={register}
                 errors=''
                 errorMessage={''}
@@ -252,13 +277,13 @@ const LaptopInfo = () => {
             </p>
             <div className='flex w-[15rem] justify-between '>
               <RadioButton
-                value={'new'}
+                value={'ახალი'}
                 name={'condition'}
                 text={'ახალი'}
                 register={register}
               />
               <RadioButton
-                value={'used'}
+                value={'მეორადი'}
                 name={'condition'}
                 text={'მეორადი'}
                 register={register}

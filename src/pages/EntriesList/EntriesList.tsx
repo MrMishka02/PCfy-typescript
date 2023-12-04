@@ -3,13 +3,26 @@ import { CircleButton, InfoHeadLabel, PCList } from 'components'
 import { useEffect, useState } from 'react'
 
 type pcfyDataT = {
+  personalData: {
+    firstName: string
+    surName: string
+    team: string
+    position: string
+    email: string
+    phoneNumber: string
+  }
+  laptopData: {
+    laptopName: string
+    laptopBrand: string
+    laptopCpu: string
+    laptopCpuCores: number
+    laptopCpuThreads: number
+    laptopRam: number
+    laptopPrice: number
+    memory: number
+    condition: string
+  }
   createdAt: string
-  email: string
-  firstName: string
-  phoneNumber: string
-  position: string
-  surName: string
-  team: string
   updatedAt: string
   __v: number
   _id: string
@@ -42,7 +55,7 @@ const EntriesList = () => {
       >
         <>
           {pcfyData.map((userData) => (
-            <PCList key={userData._id} userData={userData} />
+            <PCList key={userData.personalData.email} userData={userData} />
           ))}
         </>
       </div>
