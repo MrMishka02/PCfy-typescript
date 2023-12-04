@@ -40,7 +40,7 @@ const PCList = ({ userData }: { userData: pcfyDataT }) => {
         alt='PC'
         className='ml-4 w-[16.625rem] rounded-xl sm:w-[9rem]'
       />
-      <div className='ml-6 flex h-[56%] w-[40%] flex-col justify-between'>
+      <div className='ml-6 flex h-[56%] w-[40%] flex-col justify-between sm:h-[85%]'>
         <p className='text-lg font-semibold text-[#2E2E2E] sm:text-sm sm:font-medium'>
           {userData.personalData.firstName +
             ' ' +
