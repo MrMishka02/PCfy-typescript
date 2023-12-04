@@ -33,9 +33,11 @@ const EntriesList = () => {
 
   useEffect(() => {
     const fetchPCfyData = async () => {
-      const response = await axios.get('http://localhost:4000/api/pcfyinfo')
+      const response = await axios.get(
+        'https://pcfy-redberry.onrender.com/api/pcfyinfo/'
+      )
 
-      if (response.statusText === 'OK') {
+      if (response.status === 200) {
         setPCfyData(response.data)
       }
     }
