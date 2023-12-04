@@ -79,7 +79,7 @@ const LaptopInfo = () => {
       laptopData,
     }
     await axios
-      .post('http://localhost:4000/api/pcfyinfo', combinedData)
+      .post('https://pcfy-redberry.onrender.com/api/pcfyinfo/', combinedData)
       .then((response) => {
         console.log('Added to DB')
       })
