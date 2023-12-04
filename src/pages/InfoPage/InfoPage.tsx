@@ -26,7 +26,7 @@ const InfoPage = () => {
             className='w-[36rem] sm:w-[22.375rem]'
           />
         </div>
-        <div className='flex w-[50%] sm:mt-4 sm:w-full'>
+        <div className='flex ml-20 w-[50%] sm:mt-4 sm:w-full'>
           <div className='ml-4 mt-8 w-[30%] sm:ml-10 sm:mt-0 sm:w-[45%]'>
             <InfoLabel text={'სახელი: '} />
             <InfoLabel text={'თიმი: '} />
