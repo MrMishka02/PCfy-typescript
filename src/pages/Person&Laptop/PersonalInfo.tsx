@@ -82,20 +82,8 @@ const PersonalInfo = () => {
 
   useFormPersist('PersonalInfo', { watch, setValue })
 
-  const onSubmit = async (data: FormData) => {
-    // localStorage.setItem('PersonalInfo', JSON.stringify(data))
-    await axios
-      .post('http://localhost:4000/api/pcfyinfo', data)
-      .then((response) => {
-        console.log(response.data)
-      })
-      .catch((error) => {
-        if (error.response.status === 400) {
-          alert(error.response.data.error)
-        } else {
-          console.log('Error: ', error.message)
-        }
-      })
+  const onSubmit = (data: FormData) => {
+    localStorage.setItem('PersonalInfo', JSON.stringify(data))
   }
 
   return (
@@ -207,7 +195,7 @@ const PersonalInfo = () => {
             text={'შემდეგი'}
             type='submit'
             isValid={isValid}
-            path=''
+            path='/laptop-info'
           />
         </div>
       </form>

@@ -61,8 +61,11 @@ const LaptopInfo = () => {
     reValidateMode: 'onChange',
     resolver: yupResolver(schema),
   })
+
   useFormPersist('LaptopInfo', { watch, setValue })
+
   const navigate = useNavigate()
+
   const onSubmit = (data: FormData) => {
     localStorage.setItem('LaptopInfo', JSON.stringify(data))
   }

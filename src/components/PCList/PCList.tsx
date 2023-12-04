@@ -2,13 +2,21 @@ import { useNavigate } from 'react-router-dom'
 import pcImg from 'assets/img/pc.png'
 
 type pcfyDataT = {
-  createdAt: string
-  email: string
   firstName: string
-  phoneNumber: string
-  position: string
   surName: string
   team: string
+  position: string
+  email: string
+  phoneNumber: string
+  laptopBrand: string
+  laptopCpu: string
+  laptopCpuCores: number
+  laptopCpuThreads: number
+  laptopRam: number
+  laptopPrice: number
+  memory: number
+  condition: string
+  createdAt: string
   updatedAt: string
   __v: number
   _id: string
