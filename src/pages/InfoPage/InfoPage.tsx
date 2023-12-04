@@ -8,6 +8,12 @@ import {
 import laptop from 'assets/img/laptop.png'
 
 const InfoPage = () => {
+  const storageKey: string = 'pcfyInfo'
+  const value: string | null = sessionStorage.getItem(storageKey)
+  let pcfyInfo
+  if (value !== null) {
+    pcfyInfo = JSON.parse(value)
+  }
   return (
     <div className='flex h-full w-full flex-col items-center bg-[#FFFFFF]'>
       <CircleButton path={'/entries-list'} />
@@ -28,12 +34,12 @@ const InfoPage = () => {
             <InfoLabel text={'მეილი: '} />
             <InfoLabel text={'ტელ. ნომერი: '} />
           </div>
-          <div className='ml-10 mt-8 w-[50%] sm:ml-0 sm:mt-0 sm:w-[50%] '>
-            <InfoText text={'აკაკი წერეთელი'} />
-            <InfoText text={'დიზაინერები'} />
-            <InfoText text={'ილუსტრატორი'} />
-            <InfoText text={'ako@redberry.ge'} />
-            <InfoText text={'+995 583 45 28 33'} />
+          <div className='ml-4 mt-8 w-[55%] sm:ml-0 sm:mt-0 sm:w-[50%] '>
+            <InfoText text={pcfyInfo.firstName + ' ' + pcfyInfo.surName} />
+            <InfoText text={pcfyInfo.team} />
+            <InfoText text={pcfyInfo.position} />
+            <InfoText text={pcfyInfo.email} />
+            <InfoText text={pcfyInfo.phoneNumber} />
           </div>
         </div>
       </div>

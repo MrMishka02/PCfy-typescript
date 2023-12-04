@@ -40,6 +40,7 @@ const PCList = ({ userData }: { userData: pcfyDataT }) => {
           underline hover:cursor-pointer sm:mt-2 sm:text-sm'
           onClick={() => {
             navigate('/info-page')
+            sessionStorage.setItem('pcfyInfo', JSON.stringify(userData))
           }}
         >
           მეტის ნახვა
