@@ -82,8 +82,8 @@ const PersonalInfo = () => {
 
   useFormPersist('PersonalInfo', { watch, setValue })
 
-  const onSubmit = (data: FormData) => {
-    localStorage.setItem('PersonalInfo', JSON.stringify(data))
+  const onSubmit = (personalData: FormData) => {
+    localStorage.setItem('PersonalInfo', JSON.stringify(personalData))
   }
 
   return (
