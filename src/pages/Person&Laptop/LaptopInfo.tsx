@@ -79,7 +79,7 @@ const LaptopInfo = () => {
       laptopData,
     }
     await axios
-      .post('https://pcfy-redberry.onrender.com/api/pcfyinfo/', combinedData)
+      .post('https://p-cfy-backend.vercel.app/api/pcfyinfo', combinedData)
       .then((response) => {
         console.log('Added to DB')
       })
