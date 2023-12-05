@@ -34,7 +34,7 @@ const EntriesList = () => {
   useEffect(() => {
     const fetchPCfyData = async () => {
       const response = await axios.get(
-        'https://p-cfy-backend.vercel.app/api/pcfyinfo'
+        'https://pcfy-backend.vercel.app/api/pcfyinfo'
       )
 
       if (response.status === 200) {
