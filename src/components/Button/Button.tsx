@@ -1,17 +1,18 @@
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router'
 
 type Props = {
   text: string
   path: string
+  clickFunc: any
 }
-function Button({ text, path }: Props) {
+function Button({ text, path, clickFunc }: Props) {
   const navigate = useNavigate()
   return (
     <button
       type='button'
       onClick={() => {
+        clickFunc()
         navigate(path)
-        localStorage.clear()
       }}
       className='mb-[1.625rem] h-full w-full
     cursor-pointer rounded-[0.5rem] border-none bg-[#62A1EB]
