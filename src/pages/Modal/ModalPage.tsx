@@ -16,7 +16,13 @@ const ModalPage = () => {
             ჩანაწერი დამატებულია!
           </p>
           <div className='mt-20 mb-10 h-[3.75rem] w-[18.5625rem] text-[1.25rem] leading-6 sm:mt-[12rem] sm:mb-10 sm:w-[22.375rem]'>
-            <Button text={'სიაში გადაყვანა'} path={'/entries-list'} />
+            <Button
+              text={'სიაში გადაყვანა'}
+              path='/entries-list'
+              clickFunc={() => {
+                localStorage.clear()
+              }}
+            />
           </div>
           <p
             className='mb-11 text-[1.25rem] font-medium leading-6 text-[#0089A7] hover:cursor-pointer'

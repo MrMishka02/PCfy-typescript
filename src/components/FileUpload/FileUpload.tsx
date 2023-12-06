@@ -1,7 +1,9 @@
 import icon from 'assets/icon/icon-camera.png'
 import Button from 'components/Button/Button'
+import { useState } from 'react'
 
 const FileUpload = () => {
+  const [file, setFile] = useState()
   return (
     <div
       className='m-auto lgMin:h-[26.43rem] lgMin:w-[54.875rem] mdMin:h-[22.43rem] mdMin:w-[40.875rem]
@@ -29,9 +31,20 @@ const FileUpload = () => {
           ლეპტოპის ფოტოს ატვირთვა
         </p>
       </div>
-
       <div className='relative top-[10.5rem] mdMin:left-[13rem] lgMin:left-[20rem] h-[3.75rem] w-[14.6rem] md:hidden'>
-        <Button text={'ატვირთე'} path={''} />
+        <input
+          className='block w-full mb-4 text-sm cursor-pointer text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0
+          file:text-sm file:font-semibold file:cursor-pointer file:bg-violet-50 file:text-blue-700 hover:file:bg-blue-100'
+          type='file'
+          onChange={(e: any) => setFile(e.target.files[0])}
+        />
+        <Button
+          text={'ატვირთე'}
+          path=''
+          clickFunc={() => {
+            console.log(file)
+          }}
+        />
       </div>
     </div>
   )
