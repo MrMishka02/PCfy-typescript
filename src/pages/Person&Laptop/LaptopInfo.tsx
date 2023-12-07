@@ -84,7 +84,7 @@ const LaptopInfo = () => {
     console.log(combinedData)
     try {
       const response = await axios.post(
-        `${process.env.BACKEND_SERVER}/api/pcfyinfo`,
+        'https://pcfy-backend.vercel.app/api/pcfyinfo',
         combinedData
       )
       //@ts-ignore
