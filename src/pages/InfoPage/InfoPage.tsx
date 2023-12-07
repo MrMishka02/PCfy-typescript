@@ -1,3 +1,4 @@
+import laptopImage from 'assets/img/laptop.png'
 import {
   CircleButton,
   InfoHeadLabel,
@@ -45,7 +46,7 @@ const InfoPage = () => {
       <div className='mt-16 flex w-[70%] items-center sm:mt-6 sm:w-full sm:flex-col'>
         <div className='w-[50%] sm:flex sm:w-full sm:justify-center'>
           <img
-            src={pcfyInfo.imageFile}
+            src={pcfyInfo.imageFile || laptopImage}
             alt='Laptop'
             className='w-[36rem] sm:w-[22.375rem]'
           />
