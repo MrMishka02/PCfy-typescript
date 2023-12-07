@@ -18,6 +18,7 @@ import useFormPersist from 'react-hook-form-persist'
 import axios from 'axios'
 
 const schema = yup.object().shape({
+  imageFile: yup.mixed().optional(),
   laptopName: yup
     .string()
     .required('ლეპტოპის სახელი სავალდებულოა.')
@@ -66,6 +67,7 @@ const LaptopInfo = () => {
   useFormPersist('LaptopInfo', { watch, setValue })
 
   const navigate = useNavigate()
+  const [imageFile, setImageFile] = useState()
 
   const onSubmit = async (laptopData: FormData) => {
     const storageKey: string = 'PersonalInfo'
@@ -76,20 +78,29 @@ const LaptopInfo = () => {
     }
     const combinedData = {
       personalData,
+      imageFile,
       laptopData,
     }
-    await axios
-      .post('https://pcfy-backend.vercel.app/api/pcfyinfo', combinedData)
-      .then((response) => {
-        console.log('Added to DB')
-      })
-      .catch((error) => {
-        if (error.response.status === 400) {
-          alert(error.response.data.error)
-        } else {
-          console.log('Error: ', error.message)
-        }
-      })
+    console.log(combinedData)
+    try {
+      const response = await axios.post(
+        `${process.env.BACKEND_SERVER}/api/pcfyinfo`,
+        combinedData
+      )
+      //@ts-ignore
+      if (response.ok) {
+        alert('ok')
+      }
+    } catch (error) {
+      //@ts-ignore
+      if (error.response.status === 400) {
+        //@ts-ignore
+        alert(error.response.data.error)
+      } else {
+        //@ts-ignore
+        console.log('Error: ', error.message)
+      }
+    }
   }
 
   return (
@@ -120,7 +131,12 @@ const LaptopInfo = () => {
       h-[34.4375rem] w-[24.375rem] gap-5 lgMin:gap-10'
       >
         <div className='mt-20 '>
-          <FileUpload />
+          <FileUpload
+            name='imageFile'
+            accept='.jpeg, .png, .jpg'
+            imageFile={imageFile}
+            setImageFile={setImageFile}
+          />
         </div>
         <div
           className='mt-16 flex w-[55rem] items-center
