@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom'
+import pcImage from 'assets/img/pc.png'
 
 type pcfyDataT = {
   personalData: {
@@ -37,7 +38,7 @@ const PCList = ({ userData }: { userData: pcfyDataT }) => {
     >
       <div className='ml-10 w-[12rem] rounded-xl sm:ml-6 sm:w-[7rem]'>
         <img
-          src={userData.imageFile}
+          src={userData.imageFile || pcImage}
           alt='ლეპტოპის სურათი'
           className='w-full rounded-xl overflow-hidden'
         />
