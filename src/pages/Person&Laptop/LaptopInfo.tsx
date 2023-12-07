@@ -81,7 +81,6 @@ const LaptopInfo = () => {
       imageFile,
       laptopData,
     }
-    console.log(combinedData)
     try {
       const response = await axios.post(
         'https://pcfy-backend.vercel.app/api/pcfyinfo',
