@@ -1,5 +1,4 @@
 import { useNavigate } from 'react-router-dom'
-import pcImg from 'assets/img/pc.png'
 
 type pcfyDataT = {
   personalData: {
@@ -21,6 +20,7 @@ type pcfyDataT = {
     memory: number
     condition: string
   }
+  imageFile: string
   createdAt: string
   updatedAt: string
   __v: number
@@ -35,18 +35,20 @@ const PCList = ({ userData }: { userData: pcfyDataT }) => {
       rounded-[1.25rem] border-[0.0625rem] border-solid border-[#AED1EA] bg-[#EAFAFF]
       sm:ml-0 sm:h-[7.6875rem] sm:w-[22.375rem]'
     >
-      <img
-        src={pcImg}
-        alt='PC'
-        className='ml-4 w-[16.625rem] rounded-xl sm:w-[9rem]'
-      />
-      <div className='ml-6 flex h-[56%] w-[40%] flex-col justify-between sm:h-[85%]'>
+      <div className='ml-10 w-[12rem] rounded-xl sm:ml-6 sm:w-[7rem]'>
+        <img
+          src={userData.imageFile}
+          alt='ლეპტოპის სურათი'
+          className='w-full rounded-xl overflow-hidden'
+        />
+      </div>
+      <div className='ml-10 flex h-[56%] w-[40%] flex-col justify-between sm:h-[85%] sm:w-[60%]'>
         <p className='text-lg font-semibold text-[#2E2E2E] sm:text-sm sm:font-medium'>
           {userData.personalData.firstName +
             ' ' +
             userData.personalData.surName}
         </p>
-        <p className='text-lg font-medium text-[#2E2E2E] sm:font-normal'>
+        <p className='text-md font-medium text-[#2E2E2E] sm:font-normal'>
           {userData.laptopData.laptopBrand +
             ' ' +
             userData.laptopData.laptopName}

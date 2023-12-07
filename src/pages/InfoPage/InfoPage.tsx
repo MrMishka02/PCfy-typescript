@@ -5,7 +5,6 @@ import {
   InfoText,
   Line,
 } from 'components/'
-import laptop from 'assets/img/laptop.png'
 
 type pcfyDataT = {
   firstName: string
@@ -46,7 +45,7 @@ const InfoPage = () => {
       <div className='mt-16 flex w-[70%] items-center sm:mt-6 sm:w-full sm:flex-col'>
         <div className='w-[50%] sm:flex sm:w-full sm:justify-center'>
           <img
-            src={laptop}
+            src={pcfyInfo.imageFile}
             alt='Laptop'
             className='w-[36rem] sm:w-[22.375rem]'
           />

@@ -22,6 +22,7 @@ type pcfyDataT = {
     memory: number
     condition: string
   }
+  imageFile: string
   createdAt: string
   updatedAt: string
   __v: number
