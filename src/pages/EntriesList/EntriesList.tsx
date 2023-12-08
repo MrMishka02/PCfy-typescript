@@ -44,7 +44,7 @@ const EntriesList = () => {
     }
 
     fetchPCfyData()
-  }, [])
+  }, [pcfyData])
   return (
     <div className='flex h-full w-full flex-col items-center bg-[#FFFFFF] overflow-x-hidden'>
       <CircleButton path={'/'} />
