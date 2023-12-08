@@ -4,6 +4,7 @@
   "type": "commonjs",
   "private": true,
   "dependencies": {
+    "@coreui/icons": "^3.0.1",
     "@hookform/resolvers": "^3.0.0",
     "@reduxjs/toolkit": "^1.9.7",
     "@testing-library/jest-dom": "^5.16.5",
