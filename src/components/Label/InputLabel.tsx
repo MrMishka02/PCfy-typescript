@@ -36,7 +36,7 @@ const InputLabel = ({
         {...register(name)}
         className={`h-[3.75rem] w-full rounded-[0.5rem] border-#8AC0E2
         border-2 border-solid pl-2 text-base outline-none
-        ${errors ? 'border-red-500' : 'border-[#BCBCBC] '}
+        ${errors ? 'border-red-500' : 'border-[#BCBCBC]'}
         `}
         placeholder={holder}
       ></input>
