@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom'
-import axios from 'axios'
 import pcImage from 'assets/img/pc.png'
+import DeleteModal from 'components/DeleteModal/DeleteModal'
+import { useState } from 'react'
 
 type pcfyDataT = {
   personalData: {
@@ -31,13 +32,12 @@ type pcfyDataT = {
 
 const PCList = ({ userData }: { userData: pcfyDataT }) => {
   const navigate = useNavigate()
-  const deleteInfo = async () => {
-    await axios.delete(
-      'https://pcfy-backend.vercel.app/api/pcfyinfo' +
-        '/' +
-        userData.personalData.email
-    )
+  const [isShown, setIsShown] = useState(false)
+
+  const handleClick = () => {
+    setIsShown((current) => !current)
   }
+
   return (
     <div
       className='flex h-[12.8125rem] w-[35.1875rem] items-center
@@ -75,7 +75,7 @@ const PCList = ({ userData }: { userData: pcfyDataT }) => {
       </div>
       <span
         className='self-start cursor-pointer select-none mt-3 ml-6 sm:relative sm:right-2 sm:bottom-2'
-        onClick={deleteInfo}
+        onClick={handleClick}
       >
         <svg
           xmlns='http://www.w3.org/2000/svg'
@@ -92,6 +92,7 @@ const PCList = ({ userData }: { userData: pcfyDataT }) => {
           />
         </svg>
       </span>
+      {isShown && <DeleteModal userData={userData} setIsShown={setIsShown} />}
     </div>
   )
 }

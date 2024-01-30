@@ -313,7 +313,7 @@ const LaptopInfo = () => {
                 text={'დამახსოვრება'}
                 type='submit'
                 isValid={isValid}
-                path='/show-modal'
+                path='/show-succesmodal'
               />
             </div>
           </div>
