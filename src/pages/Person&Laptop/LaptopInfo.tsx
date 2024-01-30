@@ -107,18 +107,10 @@ const LaptopInfo = () => {
       <CircleButton path={'/personal-info'} />
       <div className='mt-[5.7rem] flex justify-center  sm:mt-[1.9rem]'>
         <div className='sm:hidden'>
-          <HeadLabel
-            path={'/personal-info'}
-            text={'თანამშრომლის ინფო'}
-            showLine={false}
-          />
+          <HeadLabel text={'თანამშრომლის ინფო'} showLine={false} />
         </div>
         <div className='flex flex-col items-center'>
-          <HeadLabel
-            text={'ლეპტოპის მახასიათებლები'}
-            showLine={true}
-            path={''}
-          />
+          <HeadLabel text={'ლეპტოპის მახასიათებლები'} showLine={true} />
           <p className='hidden font-normal sm:block sm:text-[0.875rem] sm:text-[#898989]'>
             2/2
           </p>
