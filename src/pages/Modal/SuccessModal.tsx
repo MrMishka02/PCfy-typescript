@@ -2,7 +2,7 @@ import { Button } from 'components'
 import { useNavigate } from 'react-router-dom'
 import firework from '../../assets/img/fireworks.png'
 
-const ModalPage = () => {
+const SuccessModal = () => {
   const navigate = useNavigate()
   return (
     <div
@@ -39,4 +39,4 @@ const ModalPage = () => {
   )
 }
 
-export default ModalPage
+export default SuccessModal
