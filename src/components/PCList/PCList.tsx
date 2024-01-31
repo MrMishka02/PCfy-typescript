@@ -63,8 +63,8 @@ const PCList = ({ userData }: { userData: pcfyDataT }) => {
             userData.laptopData.laptopName}
         </p>
         <p
-          className='mt-4 select-none text-base text-[#4386A9]
-          underline hover:cursor-pointer sm:mt-2 sm:text-sm'
+          className='mt-2 select-none text-base text-[#4386A9]
+          underline hover:cursor-pointer sm:text-sm'
           onClick={() => {
             navigate('/info-page')
             sessionStorage.setItem('pcfyInfo', JSON.stringify(userData))
@@ -74,7 +74,7 @@ const PCList = ({ userData }: { userData: pcfyDataT }) => {
         </p>
       </div>
       <span
-        className='self-start cursor-pointer select-none mt-3 ml-6 sm:relative sm:right-2 sm:bottom-2'
+        className='self-start cursor-pointer select-none mt-3 ml-6 sm:mr-2'
         onClick={handleClick}
       >
         <svg
