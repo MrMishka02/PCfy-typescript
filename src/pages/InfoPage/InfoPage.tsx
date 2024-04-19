@@ -57,7 +57,7 @@ const InfoPage = () => {
             <InfoLabel text={'თიმი: '} />
             <InfoLabel text={'პოზიცია: '} />
             <InfoLabel text={'მეილი: '} />
-            <InfoLabel text={'ტელ. ნომერი: '} />
+            <InfoLabel text={'ტელ.ნომერი: '} />
           </div>
           <div className='ml-4 mt-8 w-[55%] sm:ml-0 sm:mt-0 sm:w-[50%] '>
             <InfoText
@@ -84,7 +84,7 @@ const InfoPage = () => {
           <div className='w-[45%] sm:w-[46%]'>
             <InfoText text={laptopData.laptopName} />
             <InfoText text={laptopData.laptopBrand} />
-            <InfoText text={String(laptopData.laptopRam)} />
+            <InfoText text={`${String(laptopData.laptopRam)} GB`} />
             <InfoText text={String(laptopData.memory)} />
           </div>
         </div>
