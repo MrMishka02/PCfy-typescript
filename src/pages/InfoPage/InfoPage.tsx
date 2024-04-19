@@ -84,7 +84,7 @@ const InfoPage = () => {
           <div className='w-[45%] sm:w-[46%]'>
             <InfoText text={laptopData.laptopName} />
             <InfoText text={laptopData.laptopBrand} />
-            <InfoText text={String(laptopData.laptopRam)} />
+            <InfoText text={`${String(laptopData.laptopRam)} GB`} />
             <InfoText text={String(laptopData.memory)} />
           </div>
         </div>
